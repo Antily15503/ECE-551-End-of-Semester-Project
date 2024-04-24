@@ -11,13 +11,13 @@ output [7:0] rx_data;		// byte received
 //////////////////////////////
 // Instantiate Transmitter //
 ////////////////////////////
-UART_tx_cfg_bd iTX(.clk(clk), .rst_n(rst_n), .TX(TX), .trmt(trmt),
-        .tx_data(tx_data), .tx_done(tx_done), .baud(16'h0011));
+UART_tx iTX(.clk(clk), .rst_n(rst_n), .TX(TX), .trmt(trmt),
+        .tx_data(tx_data), .tx_done(tx_done));
 
 ///////////////////////////
 // Instantiate Receiver //
 /////////////////////////
 UART_rx iRX(.clk(clk), .rst_n(rst_n), .RX(RX), .rdy(rx_rdy),
-            .clr_rdy(clr_rx_rdy), .rx_data(rx_data), .baud_cnt(16'h0011));
+            .clr_rdy(clr_rx_rdy), .rx_data(rx_data));
 
 endmodule
