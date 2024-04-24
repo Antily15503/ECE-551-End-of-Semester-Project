@@ -29,7 +29,7 @@ always_ff @(negedge CH_Lff5, negedge armed) begin
     end else begin
 		bit3_ff1 <= 1'b1;
     end
-end
+end	
 //Double flop bit 3
 always_ff @(posedge clk) begin
 		bit3_ff2 <= bit3_ff1;
