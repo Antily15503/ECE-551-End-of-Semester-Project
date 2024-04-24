@@ -66,14 +66,15 @@ always_comb begin
           2'b00: next_state = READ;
           2'b01: next_state = WRITE;
           2'b10: begin
-            set_addr_ptr = 1'b1;
+            set_addr_ptr = 1'b1;	// Set the address pointer for data dumping
             next_state = DUMP1;
           end
-          default: next_state = NEGACK;
+          default: next_state = NEGACK;	//Handle unrecognized commands
         endcase
       end
     end
     READ: begin
+      //Logic to handle READ operations based on command specifics
       case (cmd[13:8])
         6'h00: resp = TrigCfg;
         6'h01: resp = CH1TrigCfg;
@@ -98,6 +99,7 @@ always_comb begin
       clr_cmd_rdy = 1'b1;
     end
     NEGACK: begin
+	// Negative acknowledgement for invalid commands
       send_resp_ss = 1'b1;
       resp = 8'hEE;
       next_state = IDLE;
@@ -108,12 +110,14 @@ always_comb begin
       next_state = POSACK;
     end
     POSACK: begin
+	// Acknowledge successful write operation
       send_resp_ss = 1'b1;
       resp = 8'hA5;
       next_state = IDLE;
       clr_cmd_rdy = 1'b1;
     end
     DUMP1: begin
+		// Handle data dumping from specified RAM queue
       case(cmd[10:8]) 
         3'b001: resp = rdataCH1;
         3'b010: resp = rdataCH2;

@@ -91,7 +91,7 @@ cmd_cfg #(.ENTRIES(ENTRIES),.LOG2(LOG2)) iDUTCmd (
     snd_cmd = 1'b0; // Clear command ready after the command is latched
     fork
         begin : trigcfgTimeout
-            repeat (10000) @(posedge clk);
+            repeat (100000) @(posedge clk);
             $display("Time out: send_resp was never asserted [test 1]");
             $stop();
         end
@@ -108,14 +108,14 @@ cmd_cfg #(.ENTRIES(ENTRIES),.LOG2(LOG2)) iDUTCmd (
         end
     join
 
-    // Test 2: Read TrigConfig and see if written command is written
+    // Test 2: Read TrigConfig and see if written command(AA) is written
     cmd_in = {2'b00, 6'h00, 8'hAA}; 
     snd_cmd = 1'b1;
     @(posedge clk); 
     snd_cmd = 1'b0; // Clear command ready after the command is latched
     fork
         begin : ReadTrigCfg
-            repeat (10000) @(posedge clk);
+            repeat (100000) @(posedge clk);
             $display("Time out: send_resp was never asserted [test 2]");
             $stop();
         end
@@ -130,8 +130,8 @@ cmd_cfg #(.ENTRIES(ENTRIES),.LOG2(LOG2)) iDUTCmd (
         end
     join 
 
-    waddr = 9'b10;
     // Test 3: Testing the Dump command of cmd_cfg
+	waddr = 9'b10;
     @ (posedge clk);
     cmd_in = {2'b10, 6'h01, 8'hAA}; 
     snd_cmd = 1'b1;

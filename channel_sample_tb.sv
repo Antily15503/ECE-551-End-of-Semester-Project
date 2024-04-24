@@ -30,8 +30,8 @@ clk_rst_smpl iSMPL(.clk400MHz(clk400MHz),.RST_n(RST_n),.locked(locked),.decimato
              .clk(clk),.smpl_clk(smpl_clk),.rst_n(rst_n),.wrt_smpl(wrt_smpl));
 
 ///// Instantiate DUT //////		 		  
-channel_sample iDUT(.smpl_clk(smpl_clk),.clk(clk),.CHxH(CH_H),.CHxL(CH_L),
-                    .CHxHff5(CH_Hff5),.CHxLff5(CH_Lff5),.smpl(smpl));
+channel_sample iDUT(.smpl_clk(smpl_clk),.clk(clk),.CH_H(CH_H),.CH_L(CH_L),
+                    .CH_Hff5(CH_Hff5),.CH_Lff5(CH_Lff5),.smpl(smpl));
 
 ///// Instantiate wave reconstructor //////
 wave_disp iWV(.smpl_clk(smpl_clk),.clk(clk),.wrt_smpl(wrt_smpl),

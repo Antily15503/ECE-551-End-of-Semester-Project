@@ -1,7 +1,7 @@
 module trigger_logic(CH1Trig, CH2Trig, CH3Trig, CH4Trig, CH5Trig, 
-                    armed, set_capture_done, clk, rst_n, triggered);
+                    armed, set_capture_done, clk, rst_n, triggered, protTrig);
 
-input CH1Trig, CH2Trig, CH3Trig, CH4Trig, CH5Trig, armed, set_capture_done, clk, rst_n;
+input CH1Trig, CH2Trig, CH3Trig, CH4Trig, CH5Trig, armed, set_capture_done, clk, rst_n, protTrig;
 output reg triggered;
 
 

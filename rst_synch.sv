@@ -1,6 +1,6 @@
 module rst_synch(RST_n, rst_n, clk);
 input RST_n, clk;
-output rst_n;
+output logic rst_n;
 
 logic rst;
 

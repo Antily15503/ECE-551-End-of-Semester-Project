@@ -1,4 +1,4 @@
-module UART_Wrapper(clk, rst_n, clr_cmd_rdy, cmd_rdy, cmd, send_resp, resp, resp_sent, RX, TX);
+module UART_wrapper(clk, rst_n, clr_cmd_rdy, cmd_rdy, cmd, send_resp, resp, resp_sent, RX, TX);
 	input clk, rst_n, clr_cmd_rdy, send_resp, RX;
 	input[7:0] resp;
 	output logic cmd_rdy, resp_sent, TX;

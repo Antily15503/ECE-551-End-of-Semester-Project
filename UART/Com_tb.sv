@@ -9,12 +9,17 @@ module Com_tb();
 	
 
 	ComSender iComSender(.clk(clk), .rst_n(rst_n), .cmd(comm_cmd), .send_cmd(snd_cmd), .TX(comm_tx), .RX(TX), .cmd_sent(cmd_cmplt), .resp_rdy(resp_rdy), .resp(resp_in), .clr_resp_rdy(clr_resp_rdy));
-	UART_Wrapper iUART_Wrapper(.clk(clk), .rst_n(rst_n), .clr_cmd_rdy(clr_cmd_rdy), .cmd_rdy(cmd_rdy), .cmd(wrapper_cmd), .send_resp(send_resp), .resp(resp), .resp_sent(resp_sent), .RX(comm_tx), .TX(TX));
+	UART_wrapper iUART_Wrapper(.clk(clk), .rst_n(rst_n), .clr_cmd_rdy(clr_cmd_rdy), .cmd_rdy(cmd_rdy), .cmd(wrapper_cmd), .send_resp(send_resp), .resp(resp), .resp_sent(resp_sent), .RX(comm_tx), .TX(TX));
 				 
 	always 
 		#5 clk = ~clk;
 		
 	initial begin
+		rst_n = 1;
+		#15;
+		rst_n = 0;
+		#15;
+		
 		clk = 0;
 		rst_n = 0;
 		snd_cmd = 0;

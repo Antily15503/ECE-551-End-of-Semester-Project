@@ -91,6 +91,3 @@ module AFE(smpl_clk,VIH_PWM,VIL_PWM,CH1L,CH1H,CH2L,CH2H,CH3L,CH3H,
   assign CH5H = (CH5val>VIH) ? 1'b1 : 1'b0; 
 
 endmodule  
-	
-  
-	

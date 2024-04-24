@@ -1,4 +1,4 @@
-module dual_pwm8(clk, rst_n, VIL, VIH, VIL_PWM, VIH_PWM);
+module dual_PWM(clk, rst_n, VIL, VIH, VIL_PWM, VIH_PWM);
 input clk, rst_n;
 input[7:0] VIL, VIH;
 output VIL_PWM, VIH_PWM;
