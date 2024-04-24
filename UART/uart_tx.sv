@@ -81,11 +81,7 @@ module UARTTxData(clk, rst_n, TX, tx_data, tx_done, load, transmit, shift,
 	output TX, shift;
 	output logic tx_done;
 	output logic [3:0] bit_cnt;
-<<<<<<< HEAD
 	logic [15:0] baud_cnt;
-=======
-	logic [11:0] baud_cnt;
->>>>>>> 82fee69a4068e53e80df778b5b5ffacfbc43220c
 	logic [9:0] tx_shift_reg;
 	
 	always @(posedge clk, negedge rst_n) begin
