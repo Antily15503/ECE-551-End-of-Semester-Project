@@ -122,6 +122,6 @@ module UARTTxData(clk, rst_n, TX, tx_data, tx_done, load, transmit, shift,
 	end
     
 	assign TX = (transmit) ? tx_shift_reg[0] : 1;	
-	assign shift = (baud_cnt > 2603) ? 1 : 0;
+	assign shift = (baud_cnt > 50) ? 1 : 0;
 
 endmodule

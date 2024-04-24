@@ -90,7 +90,7 @@ module UARTRxDp(clk, rst_n, start, receiving, shift, rx_data,
         end
 		else
             //set ready
-            if(clr_rdy) begin
+            if(clr_rdy || start) begin
                 ready <= 0;
             end
             else if(set_ready) begin
@@ -141,13 +141,13 @@ module UARTRxDp(clk, rst_n, start, receiving, shift, rx_data,
 	always_comb begin
 		// Wait for 1.5 cycles
 		if(bit_cnt == 0)
-			if(baud_cnt == 3906)
+			if(baud_cnt == 75)
 				shift = 1;
 			else	
 				shift = 0;
 		// Wait for 1 cycle
 		else
-			if(baud_cnt == 2604)
+			if(baud_cnt == 50)
 				shift = 1;
 			else
 				shift = 0;
