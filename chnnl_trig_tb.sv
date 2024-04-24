@@ -3,19 +3,20 @@ module chnnl_trig_tb();
 logic clk, rst_n, armed, CH_Lff5, CH_Hff5, CH_Trig;
 logic [4:0] CH_TrigCfg;
 //connecting logic signals
-chnnl_trig iDUT(.clk(clk), .rst_n(rst_n), .CH_trigCfg(CH_TrigCfg), .armed(armed), .CH_Lff5(CH_Lff5), .CH_Hff5(CH_Hff5), .CH_Trig(CH_Trig));
+chnnl_trig iDUT(.clk(clk), .rst_n(rst_n), .CH_TrigCfg(CH_TrigCfg), .armed(armed), .CH_Lff5(CH_Lff5), .CH_Hff5(CH_Hff5), .CH_Trig(CH_Trig));
 
 initial begin
     clk = 1'b0;
     rst_n = 1'b0;
-    CH_TrigCfg = '0;
-    armed = 1'b1;
+    CH_TrigCfg = 0;
+    armed = 1'b0;
     CH_Trig = 1'b0;
     CH_Hff5 = 1'b0;
     CH_Lff5 = 1'b0;
 
     @ (posedge clk); 
     rst_n = 1'b1;
+	armed = 1'b1;
     
     //Test 1: Low Level trigger
 
@@ -30,6 +31,7 @@ initial begin
     @ (posedge clk);
     CH_Lff5 = 1'b1;
     @ (posedge clk);
+	@ (posedge clk);
     if (CH_Trig == 1) begin
         $display("[failed]: Test 1b failed because CH_trig was not deasserted");
         $stop();
@@ -48,6 +50,7 @@ initial begin
     @ (posedge clk);
     CH_Hff5 = 1'b1;
     @ (posedge clk);
+	@ (posedge clk);
     if (CH_Trig == 0) begin
         $display("[failed]: Test 2b failed because CH_trig was not asserted");
         $stop();
@@ -62,8 +65,10 @@ initial begin
     armed = 1'b0;
     @ (posedge clk);
     armed = 1'b1;
+	
     #6 CH_Lff5 = 1'b0;
     @ (posedge clk);
+	@ (posedge clk);
     if (CH_Trig == 0) begin
         $display("[failed]: Test 3 failed because CH_trig was not asserted");
         $stop();
@@ -79,17 +84,17 @@ initial begin
     armed = 1'b1;
     #6 CH_Hff5 = 1'b1;
     @ (posedge clk);
+	@ (posedge clk);
     if (CH_Trig == 0) begin
-        $display("[failed]: Test 3 failed because CH_trig was not asserted");
+        $display("[failed]: Test 4 failed because CH_trig was not asserted");
         $stop();
-    end else $display("[pass]: Test 3 passed");
+    end else $display("[pass]: Test 4 passed");
 
     //Test 5: Don't Care override
     @ (posedge clk);
     CH_TrigCfg = 5'b00010;
     CH_Lff5 = 1'b1;
     @ (posedge clk);
-    $display("test 5 pt 1 done");
 
     @ (posedge clk);
     CH_TrigCfg -= 1;
