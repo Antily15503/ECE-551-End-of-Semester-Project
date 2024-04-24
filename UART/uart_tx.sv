@@ -109,7 +109,7 @@ module UARTTxData(clk, rst_n, TX, tx_data, tx_done, load, transmit, shift,
                 end
 				2'b1x: begin
                     bit_cnt <= 0;
-                    tx_shift_reg <= {1'b1, tx_data, 1'b0};
+                    tx_shift_reg <= {1'b1, {tx_data}, 1'b0};
                 end
 				default: begin
                     bit_cnt <= 0;

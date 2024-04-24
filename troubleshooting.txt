@@ -1,0 +1,15 @@
+root issue: only 'xx' is being written to ch1dump.txt
+	
+	-the TX wire in LA_dig.sv briefly goes to state xx
+	- cmd_cfg briefly reads rdataCH1 (which is xx) and sets resp to xx as a result
+
+
+	ALL DATA CHANNELS ARE XX BECAUSE:
+	- the write enable is never high for the RAMqueues
+	- the capture.sv SM never enters the write state which would set 'we' high
+	- the "run" input is never set to trigger it to enter the write state
+	- TrigCfg[4] = run is never equal to 1, which is set in cmd_cfg
+
+TrigCfg[4] can only be set to 1 if in cmd_cfg cmd[13:8] ==0, and cmd[4] == 1
+
+is this an issue with cmd not being properly set? is this cmd_cfg not checking for the right 
