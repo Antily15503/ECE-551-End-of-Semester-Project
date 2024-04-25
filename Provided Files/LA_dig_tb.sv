@@ -160,7 +160,7 @@ initial begin
             //////////////////////////////////////
             // Now wait for command to be sent //
             ////////////////////////////////////
-            // @(posedge cmd_sent);
+            @(posedge cmd_sent);
 	    ////////////////////////////
 	    // Now wait for response //
 	    //////////////////////////
