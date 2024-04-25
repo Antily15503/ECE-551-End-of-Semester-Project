@@ -1,4 +1,4 @@
-module UART_wrapper(
+module UART_wrapper_ethan(
   input RX,clk, rst_n, clr_cmd_rdy, send_resp,
   input [7:0] resp,
   output reg cmd_rdy, resp_sent, TX,

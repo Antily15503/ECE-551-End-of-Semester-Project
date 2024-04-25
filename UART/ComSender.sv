@@ -11,6 +11,7 @@ module ComSender(clk, rst_n, cmd, send_cmd, TX, RX, cmd_sent, resp_rdy, resp, cl
 	typedef enum reg[1:0] {IDLE, LHB, LLB, CMD_SENT} state_t;
 	state_t state, nxt_state;
 
+	logic set_cmd_sent;
 
 	UART iUART(.clk(clk), .rst_n(rst_n), .trmt(trmt), .tx_data(tx_data), .tx_done(tx_done), .TX(TX), .RX(RX), .rx_rdy(resp_rdy), .rx_data(resp), .clr_rx_rdy(clr_resp_rdy));
 
@@ -22,11 +23,19 @@ module ComSender(clk, rst_n, cmd, send_cmd, TX, RX, cmd_sent, resp_rdy, resp, cl
 			state <= nxt_state;
 	end
 
+	always@(posedge clk) begin
+		if(!rst_n)
+			cmd_sent <= 0;
+		else
+			cmd_sent <= set_cmd_sent;
+
+	end
+	
 	always_comb begin
 		sel = 0;
 		trmt = 0;
 		nxt_state = IDLE;
-		cmd_sent = 0;
+		set_cmd_sent = 0;
 		
 		case(state)
 			IDLE: begin
@@ -52,13 +61,13 @@ module ComSender(clk, rst_n, cmd, send_cmd, TX, RX, cmd_sent, resp_rdy, resp, cl
 					nxt_state = LLB;
 				end
 				else begin
-					cmd_sent = 1;
+					set_cmd_sent = 1;
 					nxt_state = CMD_SENT;
 				end
 			end
 			CMD_SENT: begin
 				if(!send_cmd) begin
-					cmd_sent = 1;
+					set_cmd_sent = 1;
 					nxt_state = CMD_SENT;
 				end
 				else begin

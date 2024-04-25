@@ -76,14 +76,14 @@ module UARTRxDp(clk, rst_n, start, receiving, shift, rx_data,
 	output logic[7:0] rx_data;
 	output logic[3:0] bit_cnt;
 	logic[9:0] shift_reg;
-	logic[15:0] baud_cnt;
+	logic[6:0] baud_cnt;
 	logic rx_in1, rx_in2;
 	
 	always @(posedge clk, negedge rst_n) begin
 		if(!rst_n) begin
 			bit_cnt <= '0;
             baud_cnt = '0;
-            shift_reg <= '0;
+            shift_reg = 9'd0;
             rx_data <= '0;
             rx_in1 <= '0;
 			rx_in2 <= '0;
