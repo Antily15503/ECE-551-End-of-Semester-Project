@@ -1,0 +1,381 @@
+{C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/chnnl_trig.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/chnnl_trig.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module chnnl_trig
+
+Top level modules:
+	chnnl_trig
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/trigger_logic.sv} {2 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/trigger_logic.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module trigger_logic
+** Warning: C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/trigger_logic.sv(20): (vlog-2283) Extra semicolon in $unit (global) scope.
+** Warning: C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/trigger_logic.sv(20): (vlog-2284) Empty $unit scope found.
+-- Compiling package trigger_logic_sv_unit
+
+Top level modules:
+	trigger_logic
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/Provided Files/trigger.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/Provided Files/trigger.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module trigger
+
+Top level modules:
+	trigger
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/PWM/dual_pwm8.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/PWM/dual_pwm8.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module dual_PWM
+
+Top level modules:
+	dual_PWM
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/rst_synch.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/rst_synch.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module rst_synch
+
+Top level modules:
+	rst_synch
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/SPI/SPI_RX.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/SPI/SPI_RX.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module SPI_RX
+
+Top level modules:
+	SPI_RX
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/data_comp.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/data_comp.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module data_comp
+
+Top level modules:
+	data_comp
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/SPI/SPI_TX.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/SPI/SPI_TX.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module SPI_TX
+
+Top level modules:
+	SPI_TX
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/ring_osc.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/ring_osc.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module ringOsc
+
+Top level modules:
+	ringOsc
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/Provided Files/LA_dig_tb.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/Provided Files/LA_dig_tb.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module LA_dig_tb
+
+Top level modules:
+	LA_dig_tb
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/UART/uart_tx_cfg_bd.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/UART/uart_tx_cfg_bd.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module UART_tx_cfg_bd
+-- Compiling module UARTTxSmCfgBd
+-- Compiling module UARTTxDataCfgBd
+
+Top level modules:
+	UART_tx_cfg_bd
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/SS_A2D/ss_A2D_SM.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/SS_A2D/ss_A2D_SM.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module ss_A2D_SM
+
+Top level modules:
+	ss_A2D_SM
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/AFE_1CH.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/AFE_1CH.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module AFE_1CH
+
+Top level modules:
+	AFE_1CH
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/UART/UART_wrapper.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/UART/UART_wrapper.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module UART_wrapper
+
+Top level modules:
+	UART_wrapper
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/Provided Files/LA_dig.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/Provided Files/LA_dig.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module LA_dig
+
+Top level modules:
+	LA_dig
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/Provided Files/prot_trig.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/Provided Files/prot_trig.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module prot_trig
+
+Top level modules:
+	prot_trig
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/channel_sample.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/channel_sample.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module channel_sample
+
+Top level modules:
+	channel_sample
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/clk_rst_smpl.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/clk_rst_smpl.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module clk_rst_smpl
+
+Top level modules:
+	clk_rst_smpl
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/chnnl_trig_tb.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/chnnl_trig_tb.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module chnnl_trig_tb
+
+Top level modules:
+	chnnl_trig_tb
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/channel_sample_tb.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/channel_sample_tb.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module channel_sample_tb
+
+Top level modules:
+	channel_sample_tb
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/counter_tb.v} {1 {vlog -work work -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/counter_tb.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module up_dwn_tb
+
+Top level modules:
+	up_dwn_tb
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/cmd_cfg.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/cmd_cfg.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module cmd_cfg
+
+Top level modules:
+	cmd_cfg
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/ringOscTB.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/ringOscTB.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module tb_ringOsc
+
+Top level modules:
+	tb_ringOsc
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/PWM/pwm8_tb.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/PWM/pwm8_tb.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module pwm8_tb
+
+Top level modules:
+	pwm8_tb
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/UART/uart_rx_cfg_bd.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/UART/uart_rx_cfg_bd.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module UART_rx_cfg_bd
+
+Top level modules:
+	UART_rx_cfg_bd
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/Provided Files/pll8x.v} {1 {vlog -work work -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/Provided Files/pll8x.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module pll8x
+
+Top level modules:
+	pll8x
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/data_comp_tb.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/data_comp_tb.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module data_comp_tb
+
+Top level modules:
+	data_comp_tb
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/PWM/pwm8.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/PWM/pwm8.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module pwm8
+
+Top level modules:
+	pwm8
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/UART/Com_tb.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/UART/Com_tb.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module Com_tb
+
+Top level modules:
+	Com_tb
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/UART/uart_rx.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/UART/uart_rx.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module UART_rx
+-- Compiling module UARTRxSm
+-- Compiling module UARTRxDp
+
+Top level modules:
+	UART_rx
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/UART/uart_tx.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/UART/uart_tx.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module UART_tx
+-- Compiling module UARTTxSm
+-- Compiling module UARTTxData
+
+Top level modules:
+	UART_tx
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/SS_A2D/ss_A2D.v} {1 {vlog -work work -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/SS_A2D/ss_A2D.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module ss_A2D
+
+Top level modules:
+	ss_A2D
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/UART/uart_tx_tb.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/UART/uart_tx_tb.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module UART_tx_tb
+
+Top level modules:
+	UART_tx_tb
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/SS_A2D/ss_A2D_datapath.v} {1 {vlog -work work -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/SS_A2D/ss_A2D_datapath.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module ss_A2D_datapath
+
+Top level modules:
+	ss_A2D_datapath
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/Provided Files/AFE.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/Provided Files/AFE.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module AFE
+
+Top level modules:
+	AFE
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/Provided Files/dig_core.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/Provided Files/dig_core.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module dig_core
+
+Top level modules:
+	dig_core
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/dff.v} {1 {vlog -work work -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/dff.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module dff
+
+Top level modules:
+	dff
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/RAMqueue.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/RAMqueue.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module RAMqueue
+
+Top level modules:
+	RAMqueue
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/synch_detect.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/synch_detect.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module synch_detect
+
+Top level modules:
+	synch_detect
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/trigger_logic_tb.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/trigger_logic_tb.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module trigger_logic_tb
+
+Top level modules:
+	trigger_logic_tb
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/counter.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/counter.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module counter
+
+Top level modules:
+	counter
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/capture_tb.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/capture_tb.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module capture_tb
+
+Top level modules:
+	capture_tb
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/UART/ComSender.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/UART/ComSender.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module ComSender
+
+Top level modules:
+	ComSender
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/cmd_cfg_tb.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/cmd_cfg_tb.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module cmd_cfg_tb
+
+Top level modules:
+	cmd_cfg_tb
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/PWM/dual_pwm8_tb.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/PWM/dual_pwm8_tb.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module dual_pwm8_tb
+
+Top level modules:
+	dual_pwm8_tb
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/SS_A2D/ss_A2D_tb.v} {1 {vlog -work work -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/SS_A2D/ss_A2D_tb.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module ss_A2D_tb
+
+Top level modules:
+	ss_A2D_tb
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/RAMqueue_tb.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/RAMqueue_tb.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module RAMqueue_tb
+
+Top level modules:
+	RAMqueue_tb
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/synch_detect_tb.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/synch_detect_tb.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module synch_detect_tb
+
+Top level modules:
+	synch_detect_tb
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/wave_disp.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/wave_disp.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module wave_disp
+
+Top level modules:
+	wave_disp
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/UART/UART_prot.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/UART/UART_prot.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module UART_prot
+
+Top level modules:
+	UART_prot
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/capture.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/capture.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module capture
+
+Top level modules:
+	capture
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/Provided Files/clk_rst_smpl.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/Provided Files/clk_rst_smpl.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module clk_rst_smpl
+
+Top level modules:
+	clk_rst_smpl
+
+} {} {}} {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/UART/UART.sv} {1 {vlog -work work -sv -stats=none {C:/Users/themi/WebstormProjects/ECE 551 End of Semester Project/UART/UART.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module UART
+
+Top level modules:
+	UART
+
+} {} {}}
