@@ -5,15 +5,23 @@ read_file -format sverilog {./UART/uart_rx.sv ./UART/uart_tx.sv ./UART/UART.sv .
                             ./Provided Files/LA_dig.sv}
 set current_design LA_dig
 
-# instantiates the clk #
-create_clock -name "clk" -period 1 -waveform {0 0.5} {clk}
-set_dont_touch_network [find port clk]
+# instantiates the clk and smpl_clk signals #
+create_clock -name "clk1GHz" -period 1 -waveform {0 0.5} {clk400MHz}
+create_generated_clock -name "clk1" -source [get_port clk400MHz] -divide_by 4 [get_pins iCLKRST/clk]
+set_dont_touch_network [get_pins iCLKRST/clk]
+create_generated_clock -name "clk2" -source [get_port clk400MHz] -divide_by 1 [get_pins iCLKRST/smpl_clk]
+set_dont_touch_network [find port clk400MHz]
+
 
 # setup pointer that contains all inputs other than clk #
-set prim_inputs [remove_from_collection [all_inputs] [find port clk]]
+set rst_inputs [RST_n locked]
+set chn_int [remove_from_collection [all inputs] [find port RX]]
+set chn_inputs [remove_from_collection $chn_int $rst_inputs]
 
 # set input delays and drive strength #
-set_input_delay -clock clk 0.25 $prim_inputs
+set_input_delay -clock smpl_clk 0.25 chn_inputs
+set_input_delay -clock clk400MHz 0.25 rst_inputs
+set_input_delay -clock clk 0.25 [find port RX]
 set_driving_cell -lib_cell NAND2X1_LVT -library saed32lvt_tt0p85v25c [remove_from_collection $prim_inputs [find port rst_n]]
 
 # set output delay and load on all outputs #
@@ -28,7 +36,7 @@ set_max_transition 0.15 [current_design]
 set_wire_load_model -name 16000 -library saed32lvt_tt0p85v25c
 
 # set clock uncertainty #
-set_clock_uncertainty 0.2 clk
+set_clock_uncertainty 0.2 iCLKRST/clk
 
 # first compile #
 compile -map_effort high
