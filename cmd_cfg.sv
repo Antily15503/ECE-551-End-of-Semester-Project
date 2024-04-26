@@ -35,9 +35,8 @@ module cmd_cfg(clk,rst_n,resp,send_resp,resp_sent,cmd,cmd_rdy,clr_cmd_rdy,
   logic set_addr_ptr, write_en, increment_addr, send_resp_ss;
   logic [7:0] trig_posL;
   logic [LOG2-9:0] trig_posH;
-
   //state definition
-  typedef enum reg[2:0] {IDLE,WRITE,POSACK,NEGACK,READ,DUMP1,DUMP2} state_t;
+  typedef enum reg[3:0] {IDLE,WRITE,POSACK,NEGACK,READ,DUMP1,DUMP2, WAIT1, WAIT2 } state_t;
   
   state_t state,next_state;
   
@@ -51,7 +50,7 @@ end
 
  // State Machine
 always_comb begin
-  set_addr_ptr = 1'b0;
+  set_addr_ptr = 1'b1;
   send_resp_ss = 1'b0;
   resp = 8'h00;
   write_en = 1'b0;
@@ -66,7 +65,6 @@ always_comb begin
           2'b00: next_state = READ;
           2'b01: next_state = WRITE;
           2'b10: begin
-            set_addr_ptr = 1'b1;	// Set the address pointer for data dumping
             next_state = DUMP1;
           end
           default: next_state = NEGACK;	//Handle unrecognized commands
@@ -118,6 +116,14 @@ always_comb begin
     end
     DUMP1: begin
 		// Handle data dumping from specified RAM queue
+      if (raddr == waddr) begin 
+        next_state = WAIT1;
+        clr_cmd_rdy = 1'b1;
+      end
+      else begin
+        next_state = DUMP2;
+        send_resp_ss = 1'b1;
+      end
       case(cmd[10:8]) 
         3'b001: resp = rdataCH1;
         3'b010: resp = rdataCH2;
@@ -125,17 +131,23 @@ always_comb begin
         3'b100: resp = rdataCH4;
         3'b101: resp = rdataCH5;
       endcase
-      send_resp_ss = 1'b1;
       increment_addr = 1'b1;
-      next_state = DUMP2;
+      set_addr_ptr = 0;
+
     end
     DUMP2: begin
-      if (raddr == waddr) begin 
-        next_state = IDLE;
-        clr_cmd_rdy = 1'b1;
-      end else if (resp_sent) begin
+      set_addr_ptr = 0;
+      if (resp_sent) begin
         next_state = DUMP1;
       end
+    end
+    WAIT1: begin
+      set_addr_ptr = 0;
+      next_state = WAIT2;
+    end
+    WAIT2: begin
+      set_addr_ptr = 0;
+      next_state = DUMP1;
     end
   endcase
 end
@@ -144,24 +156,39 @@ end
 assign trig_pos = {trig_posH, trig_posL};
 assign send_resp = send_resp_ss;
 
+logic [LOG2-1:0] waddr_new;
+
 //flip flop for dumping address
 always_ff @(posedge clk) begin
-  if (set_addr_ptr) raddr <= waddr;
+  if(waddr > (ENTRIES-1))
+    waddr_new <= waddr - ENTRIES -1;
+  else
+    waddr_new <= waddr;
+  if (set_addr_ptr) raddr <= waddr_new;
   else if (increment_addr) begin
     raddr <= (raddr == 9'd383) ? 9'h000 : raddr+1;
   end
+  
 end
 
   // TrigCfg register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk, negedge rst_n) begin
+  if(write_en) begin
+    $display("%b", write_en && (cmd[13:8] == 6'h00));
+  end
   if (!rst_n)
     TrigCfg <= 6'h03; // Reset value
-  else if (write_en && (cmd[13:8] == 6'h00))
+  else if (write_en && (cmd[13:8] == 6'h00)) begin
     TrigCfg <= cmd[5:0]; // Value to write to the register
+  end
+  else if (set_capture_done) begin
+    TrigCfg[5] <= 1'b1;
+    TrigCfg[4] <= 1'b0;
+  end
 end
 
 // CH1TrigCfg register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk, negedge rst_n) begin
   if (!rst_n)
     CH1TrigCfg <= 5'h01; // Reset value
   else if (write_en && (cmd[13:8] == 6'h01))
@@ -169,7 +196,7 @@ always_ff @(posedge clk) begin
 end
 
 // CH2TrigCfg register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk, negedge rst_n) begin
   if (!rst_n)
     CH2TrigCfg <= 5'h01; // Reset value
   else if (write_en && (cmd[13:8] == 6'h02))
@@ -177,7 +204,7 @@ always_ff @(posedge clk) begin
 end
 
 // CH3TrigCfg register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk, negedge rst_n) begin
   if (!rst_n)
     CH3TrigCfg <= 5'h01; // Reset value
   else if (write_en && (cmd[13:8] == 6'h03))
@@ -185,7 +212,7 @@ always_ff @(posedge clk) begin
 end
 
 // CH4TrigCfg register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk, negedge rst_n) begin
   if (!rst_n)
     CH4TrigCfg <= 5'h01; // Reset value
   else if (write_en && (cmd[13:8] == 6'h04))
@@ -193,7 +220,7 @@ always_ff @(posedge clk) begin
 end
 
 // CH5TrigCfg register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk, negedge rst_n) begin
   if (!rst_n)
     CH5TrigCfg <= 5'h01; // Reset value
   else if (write_en && (cmd[13:8] == 6'h05))
@@ -201,7 +228,7 @@ always_ff @(posedge clk) begin
 end
 
 // decimator register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk, negedge rst_n) begin
   if (!rst_n)
     decimator <= 4'h0; // Reset value
   else if (write_en && (cmd[13:8] == 6'h06))
@@ -209,7 +236,7 @@ always_ff @(posedge clk) begin
 end
 
 // VIH register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk, negedge rst_n) begin
   if (!rst_n)
     VIH <= 8'hAA; // Reset value
   else if (write_en && (cmd[13:8] == 6'h07))
@@ -217,7 +244,7 @@ always_ff @(posedge clk) begin
 end
 
 // VIL register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk, negedge rst_n) begin
   if (!rst_n)
     VIL <= 8'h55; // Reset value
   else if (write_en && (cmd[13:8] == 6'h08))
@@ -225,7 +252,7 @@ always_ff @(posedge clk) begin
 end
 
 // matchH register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk, negedge rst_n) begin
   if (!rst_n)
     matchH <= 8'h00; // Reset value
   else if (write_en && (cmd[13:8] == 6'h09))
@@ -233,7 +260,7 @@ always_ff @(posedge clk) begin
 end
 
 // matchL register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk, negedge rst_n) begin
   if (!rst_n)
     matchL <= 8'h00; // Reset value
   else if (write_en && (cmd[13:8] == 6'h0A))
@@ -241,7 +268,7 @@ always_ff @(posedge clk) begin
 end
 
 // maskH register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk, negedge rst_n) begin
   if (!rst_n)
     maskH <= 8'h00; // Reset value
   else if (write_en && (cmd[13:8] == 6'h0B))
@@ -249,7 +276,7 @@ always_ff @(posedge clk) begin
 end
 
 // maskL register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk, negedge rst_n) begin
   if (!rst_n)
     maskL <= 8'h00; // Reset value
   else if (write_en && (cmd[13:8] == 6'h0C))
@@ -257,7 +284,7 @@ always_ff @(posedge clk) begin
 end
 
 // baud_cntH register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk, negedge rst_n) begin
   if (!rst_n)
     baud_cntH <= 8'h06; // Reset value
   else if (write_en && (cmd[13:8] == 6'h0D))
@@ -265,7 +292,7 @@ always_ff @(posedge clk) begin
 end
 
 // baud_cntL register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk, negedge rst_n) begin
   if (!rst_n)
     baud_cntL <= 8'hC8; // Reset value
   else if (write_en && (cmd[13:8] == 6'h0E))
@@ -273,7 +300,7 @@ always_ff @(posedge clk) begin
 end
 
 // trig_posH register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk, negedge rst_n) begin
   if (!rst_n)
     trig_posH <= 8'h00;
   else if (write_en && (cmd[13:8] == 6'h0F))
@@ -281,7 +308,7 @@ always_ff @(posedge clk) begin
 end
 
 //trig_posL register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk, negedge rst_n) begin
   if (!rst_n)
     trig_posL <= 8'h01;
   else if (write_en && (cmd[13:8] == 6'h10))

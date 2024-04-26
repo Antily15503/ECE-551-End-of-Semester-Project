@@ -65,7 +65,7 @@ module AFE(smpl_clk,VIH_PWM,VIL_PWM,CH1L,CH1H,CH2L,CH2H,CH3L,CH3H,
 	  
   always @(negedge VIH_PWM)		// on negative edge we capture new VIH value
     if (en_VIH_PWM)
-	  VIH <= VIH_cntr[9:2];
+	  VIH <= 8'hab;
 
   /////////////////////////////////////////////////////////////
   // Now model comparator function for the various channels //

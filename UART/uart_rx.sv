@@ -141,13 +141,13 @@ module UARTRxDp(clk, rst_n, start, receiving, shift, rx_data,
 	always_comb begin
 		// Wait for 1.5 cycles
 		if(bit_cnt == 0)
-			if(baud_cnt == 75)
+			if(baud_cnt == 30)
 				shift = 1;
 			else	
 				shift = 0;
 		// Wait for 1 cycle
 		else
-			if(baud_cnt == 50)
+			if(baud_cnt == 20)
 				shift = 1;
 			else
 				shift = 0;

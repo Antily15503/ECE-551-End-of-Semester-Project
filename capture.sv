@@ -24,6 +24,9 @@ module capture(clk,rst_n,wrt_smpl,run,capture_done,triggered,trig_pos,
   
   logic inc_waddr, inc_trig_cnt, clr_waddr, clr_trig_cnt;
   logic [LOG2-1:0] trig_cnt;
+
+  logic assert_armed, deassert_armed, assert_capture, deassert_capture;
+
   //// you fill in the rest ////
   always_ff @(posedge clk, negedge rst_n) begin
     if(!rst_n) begin
@@ -55,10 +58,34 @@ module capture(clk,rst_n,wrt_smpl,run,capture_done,triggered,trig_pos,
 
   end
 
+always_ff @(posedge clk, negedge rst_n) begin
+  if(!rst_n) begin
+    armed <= 0;
+  end
+  else if (assert_armed)
+    armed <= 1;
+  else if(deassert_armed)
+    armed<=0;
+end
+
+always_ff @(posedge clk, negedge rst_n)begin
+  if(!rst_n) begin
+    set_capture_done <= 0;
+  end
+  else if(assert_capture)
+    set_capture_done <= 1;
+  else if(deassert_capture)
+    set_capture_done <= 0;
+  else
+    set_capture_done <= set_capture_done;
+end
+
   always_comb begin
     nxt_state = IDLE;
-    armed = 0;
-    set_capture_done = 0;
+    assert_armed = 0;
+    deassert_armed = 0;
+    assert_capture = 0;
+    deassert_capture = 0;
     we = 0;
     inc_waddr = 0;
     inc_trig_cnt = 0;
@@ -83,7 +110,7 @@ module capture(clk,rst_n,wrt_smpl,run,capture_done,triggered,trig_pos,
           if(!triggered) begin
             inc_waddr = 1; 
             if(waddr + trig_pos == ENTRIES - 1) begin
-              armed = 1;
+              assert_armed = 1;
             end
             nxt_state = WRITE;
           end
@@ -91,8 +118,8 @@ module capture(clk,rst_n,wrt_smpl,run,capture_done,triggered,trig_pos,
             inc_trig_cnt = 1;
             if(trig_cnt == trig_pos) begin
               nxt_state = DONE;
-              set_capture_done = 1;
-              armed = 0;
+              assert_capture = 1;
+              deassert_armed = 1;
             end
             else begin
               inc_waddr = 1;
@@ -110,6 +137,7 @@ module capture(clk,rst_n,wrt_smpl,run,capture_done,triggered,trig_pos,
         end
         else begin
           nxt_state = DONE;
+          deassert_capture = 1;
         end
 
       end

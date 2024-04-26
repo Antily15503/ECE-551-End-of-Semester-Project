@@ -165,7 +165,6 @@ initial begin
 	    // Now wait for response //
 	    //////////////////////////
 	    @(posedge resp_rdy)
-      $display("Resp: %h resp&8'820: %b", resp, resp&8'h20);
 	    if (resp&8'h20)				// is capture_done bits set?
 	      capture_done_bit = 1'b1;
 	    clr_resp_rdy = 1;
