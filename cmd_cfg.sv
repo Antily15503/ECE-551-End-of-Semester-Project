@@ -153,7 +153,7 @@ always_ff @(posedge clk) begin
 end
 
   // TrigCfg register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk negedge rst_n) begin
   if (!rst_n)
     TrigCfg <= 6'h03; // Reset value
   else if (write_en && (cmd[13:8] == 6'h00))
@@ -161,7 +161,7 @@ always_ff @(posedge clk) begin
 end
 
 // CH1TrigCfg register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk negedge rst_n) begin
   if (!rst_n)
     CH1TrigCfg <= 5'h01; // Reset value
   else if (write_en && (cmd[13:8] == 6'h01))
@@ -169,7 +169,7 @@ always_ff @(posedge clk) begin
 end
 
 // CH2TrigCfg register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk negedge rst_n) begin
   if (!rst_n)
     CH2TrigCfg <= 5'h01; // Reset value
   else if (write_en && (cmd[13:8] == 6'h02))
@@ -177,7 +177,7 @@ always_ff @(posedge clk) begin
 end
 
 // CH3TrigCfg register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk negedge rst_n) begin
   if (!rst_n)
     CH3TrigCfg <= 5'h01; // Reset value
   else if (write_en && (cmd[13:8] == 6'h03))
@@ -185,7 +185,7 @@ always_ff @(posedge clk) begin
 end
 
 // CH4TrigCfg register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk negedge rst_n) begin
   if (!rst_n)
     CH4TrigCfg <= 5'h01; // Reset value
   else if (write_en && (cmd[13:8] == 6'h04))
@@ -193,7 +193,7 @@ always_ff @(posedge clk) begin
 end
 
 // CH5TrigCfg register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk negedge rst_n) begin
   if (!rst_n)
     CH5TrigCfg <= 5'h01; // Reset value
   else if (write_en && (cmd[13:8] == 6'h05))
@@ -201,7 +201,7 @@ always_ff @(posedge clk) begin
 end
 
 // decimator register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk negedge rst_n) begin
   if (!rst_n)
     decimator <= 4'h0; // Reset value
   else if (write_en && (cmd[13:8] == 6'h06))
@@ -209,7 +209,7 @@ always_ff @(posedge clk) begin
 end
 
 // VIH register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk negedge rst_n) begin
   if (!rst_n)
     VIH <= 8'hAA; // Reset value
   else if (write_en && (cmd[13:8] == 6'h07))
@@ -217,7 +217,7 @@ always_ff @(posedge clk) begin
 end
 
 // VIL register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk negedge rst_n) begin
   if (!rst_n)
     VIL <= 8'h55; // Reset value
   else if (write_en && (cmd[13:8] == 6'h08))
@@ -225,7 +225,7 @@ always_ff @(posedge clk) begin
 end
 
 // matchH register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk negedge rst_n) begin
   if (!rst_n)
     matchH <= 8'h00; // Reset value
   else if (write_en && (cmd[13:8] == 6'h09))
@@ -233,7 +233,7 @@ always_ff @(posedge clk) begin
 end
 
 // matchL register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk negedge rst_n) begin
   if (!rst_n)
     matchL <= 8'h00; // Reset value
   else if (write_en && (cmd[13:8] == 6'h0A))
@@ -241,7 +241,7 @@ always_ff @(posedge clk) begin
 end
 
 // maskH register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk negedge rst_n) begin
   if (!rst_n)
     maskH <= 8'h00; // Reset value
   else if (write_en && (cmd[13:8] == 6'h0B))
@@ -249,7 +249,7 @@ always_ff @(posedge clk) begin
 end
 
 // maskL register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk negedge rst_n) begin
   if (!rst_n)
     maskL <= 8'h00; // Reset value
   else if (write_en && (cmd[13:8] == 6'h0C))
@@ -257,7 +257,7 @@ always_ff @(posedge clk) begin
 end
 
 // baud_cntH register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk negedge rst_n) begin
   if (!rst_n)
     baud_cntH <= 8'h06; // Reset value
   else if (write_en && (cmd[13:8] == 6'h0D))
@@ -265,7 +265,7 @@ always_ff @(posedge clk) begin
 end
 
 // baud_cntL register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk negedge rst_n) begin
   if (!rst_n)
     baud_cntL <= 8'hC8; // Reset value
   else if (write_en && (cmd[13:8] == 6'h0E))
@@ -273,7 +273,7 @@ always_ff @(posedge clk) begin
 end
 
 // trig_posH register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk negedge rst_n) begin
   if (!rst_n)
     trig_posH <= 8'h00;
   else if (write_en && (cmd[13:8] == 6'h0F))
@@ -281,7 +281,7 @@ always_ff @(posedge clk) begin
 end
 
 //trig_posL register
-always_ff @(posedge clk) begin
+always_ff @(posedge clk negedge rst_n) begin
   if (!rst_n)
     trig_posL <= 8'h01;
   else if (write_en && (cmd[13:8] == 6'h10))
