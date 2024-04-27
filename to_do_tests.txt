@@ -1,0 +1,27 @@
+Possible tests 
+
+Channel based trigerring:
+
+1.Channel 1, pos edge
+2.Channel 3, neg edge
+3.Channel 4, high level
+3.Channel 2, low level
+
+
+Protocol based trigerring:
+
+1. UART at 9600 baud, match=8'h4a, mask=8'h00
+
+2. UART at 9600 baud, match=8'h8b, mask=8'h00
+
+3. UART at 12600 baud, match=8'ha2, mask=8'h00
+
+4. UART at 9600 baud, match=8'hc8, mask=8'hff
+
+5. SPI at edge - pos , len - 16 bits, match=16'h8b9c, mask=16'h0000
+
+6. SPI at edge - neg , len - 16 bits, match=16'ha1b2, mask=16'hff00
+
+7. SPI at edge - neg , len - 8 bits, match=8'hc4, mask=8'h00
+
+8. SPI at edge - pos , len - 8 bits, match=8'hc4, mask=8'h0f
