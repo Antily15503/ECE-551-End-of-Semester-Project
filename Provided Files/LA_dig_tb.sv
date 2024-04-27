@@ -89,8 +89,13 @@ ComSender iSNDR(.clk(clk), .rst_n(RST_n), .RX(TX), .TX(RX),
 ////////////////////////////////////////////////////////////////
 // Instantiate transmitter as source for protocol triggering //
 //////////////////////////////////////////////////////////////
+
+//test bench signals for UART_tx_cfg_bd
+logic [7:0] UART_tx_cfg_bd_data;
+logic tx_done
+
 UART_tx_cfg_bd iTX(.clk(clk), .rst_n(RST_n), .TX(tx_prot), .trmt(strt_tx),
-            .tx_data(8'h96), .tx_done(), .baud(16'h006C));	// 921600 Baud
+            .tx_data(UART_tx_cfg_bd_data), .tx_done(tx_done), .baud(16'h006C));	// 921600 Baud
 					 
 ////////////////////////////////////////////////////////////////////
 // Instantiate SPI transmitter as source for protocol triggering //
@@ -230,6 +235,50 @@ initial begin
     found_res = $fscanf(fptr1,"%h",res);
     found_expected = $fscanf(fexp,"%h",exp);
   end	
+
+  //TEST 2: testing UART_triggering
+
+  ////// Setting UART baud_cnt to 9600 //////
+  host_cmd = {2'b01, 6'hC8, 8'd9600};
+  @(posedge clk);
+  send_cmd = 1;
+  @(posedge clk);
+  send_cmd = 0;
+  //waiting for command to be recieved
+  @(posedge cmd_sent);
+  @(posedge clk);
+  //check for posACK
+
+  ////// Setting maskL bits to 0x4a //////
+  host_cmd = {2'b01, 6'h0A, 8'h4a};
+  @(posedge clk);
+  send_cmd = 1;
+  @(posedge clk);
+  send_cmd = 0;
+  //waiting for command to be recieved
+  @(posedge cmd_sent);
+  @(posedge clk);
+  //check for posACK
+
+  ////// Setting mask bits to 0000 //////
+  host_cmd = {2'b01, 6'h0C, 8'h00};
+  @(posedge clk);
+  send_cmd = 1;
+  @(posedge clk);
+  send_cmd = 0;
+  //waiting for command to be recieved
+  @(posedge cmd_sent);
+  @(posedge clk);
+  //check for posACK
+
+  //setting the UART triggering bit to 1
+  @(posedge clk);
+  UART_triggering = 1'b1;
+
+
+
+
+
   $display("YAHOO! comparison completed, test1 passed!");
   
   $stop();

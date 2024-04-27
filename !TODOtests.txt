@@ -1,0 +1,3 @@
+figure out how to test prot_trig 
+
+UART 9600 match b4a mask 00
