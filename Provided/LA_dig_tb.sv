@@ -92,7 +92,7 @@ ComSender iSNDR(.clk(clk), .rst_n(RST_n), .RX(TX), .TX(RX),
 
 //test bench signals for UART_tx_cfg_bd
 logic [7:0] UART_tx_cfg_bd_data;
-logic tx_done
+logic tx_done;
 
 UART_tx_cfg_bd iTX(.clk(clk), .rst_n(RST_n), .TX(tx_prot), .trmt(strt_tx),
             .tx_data(UART_tx_cfg_bd_data), .tx_done(tx_done), .baud(16'h006C));	// 921600 Baud
@@ -140,7 +140,7 @@ initial begin
     send_cmd = 0;
     //////////////////////////////////////
     // Now wait for command to be sent //
-    ////////////////////////////////////
+    ////////////errors////////////////////////
     @(posedge cmd_sent);
     @(posedge clk);
 	/// should probably be checking for posAck here ///
@@ -273,7 +273,7 @@ initial begin
 
   //setting the UART triggering bit to 1
   @(posedge clk);
-  UART_triggering = 1'b1;
+    // UART_triggering = 1'b1;
 
 
 

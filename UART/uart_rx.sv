@@ -23,6 +23,7 @@ module UARTRxSm(clk, rst_n, shift, receiving, busy, clr_busy, start, bit_cnt, se
 	always_ff @(posedge clk, negedge rst_n)
 		if(!rst_n)
 			state <= IDLE;
+			
 		else
 			state <= nxt_state;
 	
@@ -79,17 +80,34 @@ module UARTRxDp(clk, rst_n, start, receiving, shift, rx_data,
 	logic[6:0] baud_cnt;
 	logic rx_in1, rx_in2;
 	
-	always @(posedge clk, negedge rst_n) begin
+	always_ff @(posedge clk, negedge rst_n) begin
 		if(!rst_n) begin
-			bit_cnt <= '0;
-            baud_cnt = '0;
-            shift_reg = 9'd0;
-            rx_data <= '0;
-            rx_in1 <= '0;
-			rx_in2 <= '0;
-        end
-		else
-            //set ready
+			baud_cnt <= '0;
+		end
+		else begin
+			casex({shift, receiving})
+				2'b0_0: baud_cnt <= baud_cnt;
+				2'b0_1: baud_cnt <= baud_cnt + 1;
+				2'b1_x: baud_cnt <= 0;
+			endcase
+		end
+	end
+	
+	always_ff @(posedge clk) begin
+			 //set busy
+            if(!rx_in1 & rx_in2) begin
+                busy <= 1;
+            end
+            else if(clr_busy) begin
+                busy <= 0;
+            end
+            else begin
+                busy <= busy;
+            end
+	end
+
+	always_ff @(posedge clk) begin
+    //set ready
             if(clr_rdy || start) begin
                 ready <= 0;
             end
@@ -100,42 +118,46 @@ module UARTRxDp(clk, rst_n, start, receiving, shift, rx_data,
                 ready <= ready;
             end
 
-            //set busy
-            if(!rx_in1 & rx_in2) begin
-                busy <= 1;
-            end
-            else if(clr_busy) begin
-                busy <= 0;
-            end
-            else begin
-                busy <= busy;
-            end
+	end
 
-            rx_in1 <= RX;
+	always_ff@(posedge clk) begin
+			rx_in1 <= RX;
 			rx_in2 <= rx_in1;
+	end
 
+	always_ff@(posedge clk, negedge rst_n)begin
+		if(!rst_n)begin
+			shift_reg <= 10'd0;
+		end
+		else begin
 			casex(shift)
 				1'b0: shift_reg <= shift_reg;
 				1'b1: shift_reg <= {RX, shift_reg[9:1]};
 			endcase
+		end
+	end
 
-            casex(bit_cnt)
-				9: rx_data <= shift_reg[8:1];
-				default: rx_data <= rx_data;
-			endcase
+	always_ff@(posedge clk) begin
+		if(!rst_n)begin
+			rx_data <= '0;
+		end
+		casex(bit_cnt)
+			9: rx_data <= shift_reg[8:1];
+			default: rx_data <= rx_data;
+		endcase
 
-            casex({shift, receiving})
-				2'b0_0: baud_cnt <= baud_cnt;
-				2'b0_1: baud_cnt <= baud_cnt + 1;
-				2'b1_x: baud_cnt <= 0;
-			endcase
-
-            casex({start, shift})
+	end
+	always_ff @(posedge clk, negedge rst_n) begin
+		if(!rst_n) begin
+			bit_cnt <= '0;
+        end
+		else begin
+			casex({start, shift})
 				2'b0_0: bit_cnt <= bit_cnt;
 				2'b0_1: bit_cnt <= bit_cnt + 1;
-				2'b1_x: bit_cnt <= 0;
 				default: bit_cnt <= 0;
 			endcase
+		end
 	end
 
 	always_comb begin

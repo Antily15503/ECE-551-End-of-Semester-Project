@@ -46,7 +46,7 @@ module SPI_RX(clk, rst_n, SS_n, SCLK, MOSI, edg, len8, mask, match, SPItrig);
 	end
 
 	// SCLK and MOSI shift logic
-	always @(posedge clk, negedge rst_n) begin
+	always_ff @(posedge clk, negedge rst_n) begin
 		if(!rst_n) begin
 			SCLK_ff1 <= 0;
 			SCLK_ff2 <= 0;
@@ -76,7 +76,7 @@ module SPI_RX(clk, rst_n, SS_n, SCLK, MOSI, edg, len8, mask, match, SPItrig);
 	end
 	
 	// shft_reg logic
-	always @(posedge clk, negedge rst_n) begin
+	always_ff @(posedge clk, negedge rst_n) begin
 		if(!rst_n)
 			shft_reg <= 0;
 		else if(shift)

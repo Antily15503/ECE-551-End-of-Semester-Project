@@ -50,12 +50,15 @@ end
 
  // State Machine
 always_comb begin
+
   set_addr_ptr = 1'b1;
   send_resp_ss = 1'b0;
   resp = 8'h00;
   write_en = 1'b0;
   increment_addr = 1'b0;
   clr_cmd_rdy = 1'b0;
+  next_state = state;
+
   case (state)
     IDLE: begin
       send_resp_ss = 1'b0;
@@ -173,9 +176,6 @@ end
 
   // TrigCfg register
 always_ff @(posedge clk, negedge rst_n) begin
-  if(write_en) begin
-    $display("%b", write_en && (cmd[13:8] == 6'h00));
-  end
   if (!rst_n)
     TrigCfg <= 6'h03; // Reset value
   else if (write_en && (cmd[13:8] == 6'h00)) begin

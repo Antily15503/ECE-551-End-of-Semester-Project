@@ -1,0 +1,398 @@
+/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/clk_rst_smpl.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/clk_rst_smpl.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module clk_rst_smpl
+
+Top level modules:
+	clk_rst_smpl
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/AFE_1CH.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/AFE_1CH.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module AFE_1CH
+
+Top level modules:
+	AFE_1CH
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SPI/SPI_RX.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SPI/SPI_RX.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module SPI_RX
+
+Top level modules:
+	SPI_RX
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/trigger_logic.sv {2 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/trigger_logic.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module trigger_logic
+** Warning: /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/trigger_logic.sv(23): (vlog-2283) Extra semicolon in $unit (global) scope.
+** Warning: /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/trigger_logic.sv(23): (vlog-2284) Empty $unit scope found.
+-- Compiling package trigger_logic_sv_unit
+
+Top level modules:
+	trigger_logic
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/PWM/dual_pwm8_tb.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/PWM/dual_pwm8_tb.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module dual_pwm8_tb
+
+Top level modules:
+	dual_pwm8_tb
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SPI/SPI_TX.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SPI/SPI_TX.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module SPI_TX
+
+Top level modules:
+	SPI_TX
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/PWM/dual_pwm8.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/PWM/dual_pwm8.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module dual_PWM
+
+Top level modules:
+	dual_PWM
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/data_comp_tb.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/data_comp_tb.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module data_comp_tb
+
+Top level modules:
+	data_comp_tb
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_rx.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_rx.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module UART_rx
+-- Compiling module UARTRxSm
+-- Compiling module UARTRxDp
+
+Top level modules:
+	UART_rx
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/clk_rst_smpl.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/clk_rst_smpl.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module clk_rst_smpl
+
+Top level modules:
+	clk_rst_smpl
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/RAMqueue_tb.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/RAMqueue_tb.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module RAMqueue_tb
+
+Top level modules:
+	RAMqueue_tb
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_tx.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_tx.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module UART_tx
+-- Compiling module UARTTxSm
+-- Compiling module UARTTxData
+
+Top level modules:
+	UART_tx
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/cmd_cfg.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/cmd_cfg.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module cmd_cfg
+
+Top level modules:
+	cmd_cfg
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/ComSender.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/ComSender.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module ComSender
+
+Top level modules:
+	ComSender
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SS_A2D/ss_A2D.v {1 {vlog -work work -vopt -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SS_A2D/ss_A2D.v
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module ss_A2D
+
+Top level modules:
+	ss_A2D
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/trigger.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/trigger.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module trigger
+
+Top level modules:
+	trigger
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/UART_prot.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/UART_prot.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module UART_prot
+
+Top level modules:
+	UART_prot
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/ring_osc.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/ring_osc.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module ringOsc
+
+Top level modules:
+	ringOsc
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/chnnl_trig_tb.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/chnnl_trig_tb.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module chnnl_trig_tb
+
+Top level modules:
+	chnnl_trig_tb
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/synch_detect.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/synch_detect.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module synch_detect
+
+Top level modules:
+	synch_detect
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SS_A2D/ss_A2D_SM.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SS_A2D/ss_A2D_SM.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module ss_A2D_SM
+
+Top level modules:
+	ss_A2D_SM
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_tx_tb.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_tx_tb.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module UART_tx_tb
+
+Top level modules:
+	UART_tx_tb
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/LA_dig_tb.sv {2 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/LA_dig_tb.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module LA_dig_tb
+** Warning: /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/LA_dig_tb.sv(242): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+
+Top level modules:
+	LA_dig_tb
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/wave_disp.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/wave_disp.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module wave_disp
+
+Top level modules:
+	wave_disp
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SPI/SPI_tb.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SPI/SPI_tb.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module SPI_tb
+
+Top level modules:
+	SPI_tb
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/prot_trig.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/prot_trig.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module prot_trig
+
+Top level modules:
+	prot_trig
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_tx_cfg_bd.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_tx_cfg_bd.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module UART_tx_cfg_bd
+-- Compiling module UARTTxSmCfgBd
+-- Compiling module UARTTxDataCfgBd
+
+Top level modules:
+	UART_tx_cfg_bd
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/UART.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/UART.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module UART
+
+Top level modules:
+	UART
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/counter.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/counter.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module counter
+
+Top level modules:
+	counter
+
+} {} {}} {/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_rx- OLD.sv} {1 {vlog -work work -vopt -sv -stats=none {/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_rx- OLD.sv}
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module UART_rx
+-- Compiling module UARTRxDp
+-- Compiling module UARTRxSm
+
+Top level modules:
+	UART_rx
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_tb.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_tb.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module uart_rx_tb
+
+Top level modules:
+	uart_rx_tb
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/dff.v {1 {vlog -work work -vopt -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/dff.v
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module dff
+
+Top level modules:
+	dff
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/rst_synch.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/rst_synch.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module rst_synch
+
+Top level modules:
+	rst_synch
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/PWM/pwm8.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/PWM/pwm8.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module pwm8
+
+Top level modules:
+	pwm8
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/data_comp.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/data_comp.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module data_comp
+
+Top level modules:
+	data_comp
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/pll8x.v {1 {vlog -work work -vopt -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/pll8x.v
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module pll8x
+
+Top level modules:
+	pll8x
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/capture_tb.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/capture_tb.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module capture_tb
+
+Top level modules:
+	capture_tb
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SS_A2D/ss_A2D_tb.v {1 {vlog -work work -vopt -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SS_A2D/ss_A2D_tb.v
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module ss_A2D_tb
+
+Top level modules:
+	ss_A2D_tb
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/channel_sample.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/channel_sample.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module channel_sample
+
+Top level modules:
+	channel_sample
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/synch_detect_tb.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/synch_detect_tb.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module synch_detect_tb
+
+Top level modules:
+	synch_detect_tb
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SS_A2D/ss_A2D_datapath.v {1 {vlog -work work -vopt -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SS_A2D/ss_A2D_datapath.v
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module ss_A2D_datapath
+
+Top level modules:
+	ss_A2D_datapath
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/capture.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/capture.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module capture
+
+Top level modules:
+	capture
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_rx_cfg_bd.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_rx_cfg_bd.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module UART_rx_cfg_bd
+
+Top level modules:
+	UART_rx_cfg_bd
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/PWM/pwm8_tb.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/PWM/pwm8_tb.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module pwm8_tb
+
+Top level modules:
+	pwm8_tb
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/Com_tb.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/Com_tb.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module Com_tb
+
+Top level modules:
+	Com_tb
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/UART_wrapper.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/UART_wrapper.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module UART_wrapper
+
+Top level modules:
+	UART_wrapper
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/cmd_cfg_tb.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/cmd_cfg_tb.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module cmd_cfg_tb
+
+Top level modules:
+	cmd_cfg_tb
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/RAMqueue.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/RAMqueue.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module RAMqueue
+
+Top level modules:
+	RAMqueue
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/trigger_logic_tb.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/trigger_logic_tb.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module trigger_logic_tb
+
+Top level modules:
+	trigger_logic_tb
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/channel_sample_tb.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/channel_sample_tb.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module channel_sample_tb
+
+Top level modules:
+	channel_sample_tb
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/dig_core.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/dig_core.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module dig_core
+
+Top level modules:
+	dig_core
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/chnnl_trig.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/chnnl_trig.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module chnnl_trig
+
+Top level modules:
+	chnnl_trig
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/AFE.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/AFE.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module AFE
+
+Top level modules:
+	AFE
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/counter_tb.v {1 {vlog -work work -vopt -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/counter_tb.v
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module up_dwn_tb
+
+Top level modules:
+	up_dwn_tb
+
+} {} {}} /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/ringOscTB.sv {1 {vlog -work work -vopt -sv -stats=none /filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/ringOscTB.sv
+QuestaSim vlog 2023.2_1 Compiler 2023.05 May 12 2023
+-- Compiling module tb_ringOsc
+
+Top level modules:
+	tb_ringOsc
+
+} {} {}}

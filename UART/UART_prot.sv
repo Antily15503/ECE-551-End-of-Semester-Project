@@ -13,7 +13,7 @@ always_ff@(posedge clk, negedge rst_n) begin
         uart <= 0;
     end
     else begin
-        uart = {{uart[6:0]}, RX};
+        uart <= {{uart[6:0]}, RX};
     end
 
 end

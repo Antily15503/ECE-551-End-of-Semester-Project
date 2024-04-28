@@ -11,6 +11,9 @@ output reg [7:0] rdata;
 logic [LOG2-1:0] waddr_new, raddr_new;
 
 reg [7:0] memory[0:ENTRIES-1];
+
+// synposys translate_off
+// synthesis translate_off
 always_ff @(posedge clk)begin
     if(waddr > ENTRIES-1) begin
         waddr_new <= waddr - ENTRIES-1;
@@ -32,6 +35,7 @@ always_ff @(posedge clk) begin
     end
     rdata <= memory[raddr_new];
 end
-
+// synposys translate_on
+// synthesis translate_on
 endmodule
 

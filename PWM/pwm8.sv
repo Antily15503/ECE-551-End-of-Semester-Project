@@ -7,12 +7,12 @@ logic [7:0] cnt;
 
 always_ff @(posedge clk, negedge rst_n) begin
    if(!rst_n) begin
-        PWM_sig = 0;
-        cnt = 8'h00;
+        PWM_sig <= 0;
+        cnt <= 8'h00;
    end
    else if(cnt <= duty && duty != 8'h00) begin
         cnt <= cnt + 1;
-        PWM_sig = 1'b1;
+        PWM_sig <= 1'b1;
    end
    else if(cnt > duty && cnt !=8'hff) begin
         cnt <= cnt + 1;
@@ -23,8 +23,8 @@ always_ff @(posedge clk, negedge rst_n) begin
    end
    else begin
         PWM_sig <= PWM_sig;
+        cnt <= cnt;
    end
 end
-
 
 endmodule   
