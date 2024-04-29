@@ -46,6 +46,8 @@ logic SPI_triggering = 1'b0;	// set to true if testing SPI based triggering
 logic [7:0] UART_tx_cfg_bd_data;
 logic tx_done;
 
+
+
 module LA_dig_tb_tasks();
 
 
@@ -210,8 +212,6 @@ initial begin
   end	
 
   //TEST 2: testing UART_triggering
-
-  
   repeat(400) @(posedge clk);
 
     ////// Disable CH1 Triggering //////
@@ -222,12 +222,6 @@ initial begin
     @(posedge cmd_sent);
     @(posedge clk);
 
-  ////// Setting UART baud_cnt to 9600 //////
-  // send_command({2'b01, 6'hC8, 8'd9600});
-  // //waiting for command to be recieved
-  // @(posedge cmd_sent);
-  // @(posedge clk);
-  // //check for posACK
 
   ////// Set Baud L//////
   send_command({2'b01, 6'h0E, 8'h6C});
@@ -242,8 +236,6 @@ initial begin
   @(posedge clk);
 
 
-
-
   ////// Set run bit, enable uart triggering//////
   send_command(16'h4012);
   //waiting for command to be recieved
@@ -252,20 +244,15 @@ initial begin
 
 
   ////// Setting maskL bits to 0x4a //////
-  send_command({2'b01, 6'h0A, 8'h4A});
+  send_command({2'b01, 6'h0A, 8'h1A});
   //waiting for command to be recieved
   @(posedge cmd_sent);
   @(posedge clk);
-  //check for posACK
 
   ////// Setting match bits to 0000 //////
   send_command({2'b01, 6'h0C, 8'h00});
   //waiting for command to be recieved
   @(posedge cmd_sent);
-  @(posedge clk);
-  //check for posACK
-
-  //setting the UART triggering bit to 1
   @(posedge clk);
   
     uart_trig_polling();
@@ -372,20 +359,14 @@ task uart_trig_polling();
             send_cmd = 0;
             // wait for command to be sent 
             @(posedge cmd_sent);
-
-
-
-
 	    // Call wait_resp task
 	    wait_resp();
 	  end
 
-    if(uart_cmd != 16'h004A) begin
-    $display("Error: uart triggerd off bad cmd, %h", uart_cmd);
-    $stop;
-
-  end
-	$display("INFO: capture_done bit is set");
+    if(uart_cmd != 16'h001A) begin
+      $display("Error: uart triggerd off bad cmd, %h", uart_cmd);
+      $stop;
+    end
   
 	end
 

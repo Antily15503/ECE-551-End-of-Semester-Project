@@ -16,30 +16,46 @@ endmodule
 module UARTTxSmCfgBd (clk, rst_n, trmt, bit_cnt, load, transmit, shift, set_done, clr_done);
 	input clk, rst_n, trmt, shift;
 	input[3:0] bit_cnt;
-	output load, transmit, set_done, clr_done;
+	output load, set_done, clr_done;
+	output logic transmit;
     
 	typedef enum logic[1:0] {IDLE, TRANSMIT, SHIFT} state_t;
 	state_t state, nxt_state;
-	logic load, transmit, set_done, clr_done;
+	logic load, assert_transmit, set_done, clr_done;
 	
-	always_ff @(posedge clk, negedge rst_n)
+	always_ff @(posedge clk, negedge rst_n) begin
 		if(!rst_n) begin
 			state <= IDLE;
         end
 		else begin
 			state <= nxt_state;
         end
-	
+	end
+
+
+	always_ff @(posedge clk, negedge rst_n) begin
+		if(!rst_n) begin
+			transmit <= 0;
+        end
+		else if(assert_transmit) begin
+			transmit <= 1;
+        end
+		else
+			transmit <= 0;
+	end
+
+
+
 	always_comb begin
 		set_done = 1'b0;
 		load = 1'b0;
 		clr_done = 1'b0;
-		transmit = 1'b0;
+		assert_transmit = 1'b0;
 		nxt_state = IDLE;
 		case(state)
             SHIFT: begin
 				if (bit_cnt < 10) begin
-					transmit = 1'b1;
+					assert_transmit = 1'b1;
 					nxt_state = TRANSMIT;
 				end
 				else begin
@@ -50,15 +66,17 @@ module UARTTxSmCfgBd (clk, rst_n, trmt, bit_cnt, load, transmit, shift, set_done
             TRANSMIT: begin
 				if(shift)begin
 					nxt_state = SHIFT;
+					if(bit_cnt < 9)
+						assert_transmit = 1'b1;
 				end
 				else begin
 					nxt_state = TRANSMIT;
-					transmit = 1'b1;
+					assert_transmit = 1'b1;
 				end
 			end
             IDLE: begin
 				if(trmt)begin
-					transmit = 1'b1;
+					assert_transmit = 1'b1;
 					clr_done = 1'b1;
 					nxt_state = TRANSMIT;
 					load = 1'b1;
