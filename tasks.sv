@@ -19,7 +19,6 @@ task send_command(input [15:0] cmd2send);
 		send_cmd = 0;
 	end
 endtask
-
 task wait_resp();	
 	begin
 		@(posedge resp_rdy)

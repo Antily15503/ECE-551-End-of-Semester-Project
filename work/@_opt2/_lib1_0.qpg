@@ -1,0 +1,1257 @@
+m255
+K4
+z2
+!s12c _opt2
+Z0 !s99 nomlopt
+!s12c _opt1
+R0
+Z1 !s12c _opt
+R0
+R1
+R0
+R1
+R0
+!s11f vlog 2023.2_1 2023.05, May 12 2023
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z2 d/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project
+T_opt
+!s110 1714407920
+V:ChPLaK0ORdJNRFmRmXz;1
+04 9 4 work LA_dig_tb fast 0
+=3-000ae431a4f1-662fc9f0-67ed2-50337
+R0
+Z3 !s12b OEM100
+Z4 !s124 OEM100
+Z5 o-quiet -auto_acc_if_foreign -work work
+Z6 tCvgOpt 0
+n@_opt
+Z7 OE;O;2023.2_1;77
+R2
+T_opt1
+!s110 1714409086
+ViKi[h5^65UA1M4F3hQF[R0
+Z8 04 23 4 work LA_dig_tb_tasks_sv_unit fast 0
+=1-000ae431a4f1-662fce7d-df1c1-5fb64
+R0
+R3
+R4
+R5
+R6
+n@_opt1
+R7
+R2
+T_opt2
+!s110 1714409134
+VkmOVa9AS7OHin=i]EC:c73
+R8
+=1-000ae431a4f1-662fceae-abe0e-5fe17
+R0
+R3
+R4
+o-quiet -auto_acc_if_foreign -work work +acc
+R6
+n@_opt2
+R7
+vAFE
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/AFE.sv
+Z9 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z10 !s110 1714405868
+!i10b 1
+!s100 ?665f9[`iKR0Baih>NSjd2
+I0A6U`@3^Pl_jGzibP8<f`1
+S1
+R2
+Z11 w1714405497
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/AFE.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/AFE.sv
+!i122 63
+Z12 L0 1 93
+Z13 VDg1SIo80bB@j0V0VzS_@n1
+Z14 OE;L;2023.2_1;77
+r1
+!s85 0
+31
+!i113 0
+Z15 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R6
+n@a@f@e
+vAFE_1CH
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/AFE_1CH.sv
+R9
+Z16 !s110 1714405864
+!i10b 1
+!s100 3Y=:QM^0`Gb;;>8]TE5bF1
+InnL5C67Me[F;A8U:eETG>2
+S1
+R2
+Z17 w1714324131
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/AFE_1CH.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/AFE_1CH.sv
+!i122 17
+L0 1 28
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+n@a@f@e_1@c@h
+vcapture
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/capture.sv
+R9
+R16
+!i10b 1
+!s100 O[LI96<<7FeVkzF?<=gd`3
+IFTg>kC]M2XNZT8g^lcXT]3
+S1
+R2
+Z18 w1714324132
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/capture.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/capture.sv
+!i122 18
+L0 1 147
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+vcapture_tb
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/capture_tb.sv
+R9
+R16
+!i10b 1
+!s100 4L;IXjC_2=E1LSLgFa4HM1
+I<P5]J3^OTkjF@i<fU@hZ93
+S1
+R2
+R18
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/capture_tb.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/capture_tb.sv
+!i122 19
+L0 1 69
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+vchannel_sample
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/channel_sample.sv
+R9
+R16
+!i10b 1
+!s100 ;iU`mhOcKQhJD1GXlD_QT3
+Ij6j154^4[NGg>JmKOTZ9a2
+S1
+R2
+R18
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/channel_sample.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/channel_sample.sv
+!i122 20
+Z19 L0 1 37
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+vchannel_sample_tb
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/channel_sample_tb.sv
+R9
+R16
+!i10b 1
+!s100 =[9B><II`KXW;JBSQOToP2
+I1f^6e7K58R=NIbiA83?ck2
+S1
+R2
+R18
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/channel_sample_tb.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/channel_sample_tb.sv
+!i122 21
+L0 2 61
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+vchnnl_trig
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/chnnl_trig.sv
+R9
+R16
+!i10b 1
+!s100 =@Xn1UQSO^9CnV6kOn<kI2
+IQ`=hK7RXG1R<^X7?NcEI:3
+S1
+R2
+R18
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/chnnl_trig.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/chnnl_trig.sv
+!i122 22
+L0 1 51
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+vchnnl_trig_tb
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/chnnl_trig_tb.sv
+R9
+R16
+!i10b 1
+!s100 :V5[EY[RCjaNadjRecMPl2
+ILg6kN?E[]YP4kgO5WTD5a3
+S1
+R2
+R18
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/chnnl_trig_tb.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/chnnl_trig_tb.sv
+!i122 23
+L0 1 109
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+vclk_rst_smpl
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/clk_rst_smpl.sv
+R9
+R10
+!i10b 1
+!s100 @U]`B1:a^zCo1L4LLWZ_H2
+I<3@3`m]<EK^?615c;D>6S0
+S1
+R2
+R11
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/clk_rst_smpl.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/clk_rst_smpl.sv
+!i122 64
+L0 1 140
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+vcmd_cfg
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/cmd_cfg.sv
+R9
+R16
+!i10b 1
+!s100 _NaNe>DU>Wl9B>YmZTC;L3
+I>eYcGN4_]m:@E=XLH8?]F3
+S1
+R2
+R11
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/cmd_cfg.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/cmd_cfg.sv
+!i122 25
+L0 1 318
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+vcmd_cfg_tb
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/cmd_cfg_tb.sv
+R9
+R16
+!i10b 1
+!s100 UZfDW?eX>EQD9X:@lDAEg2
+Il947:`T?ZhhfhNlDZdcfX0
+S1
+R2
+R18
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/cmd_cfg_tb.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/cmd_cfg_tb.sv
+!i122 26
+Z20 L0 1 161
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+vCom_tb
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/Com_tb.sv
+R9
+Z21 !s110 1714405866
+!i10b 1
+!s100 3[2BJZ0JVIoEk<^CCz3IM0
+I>UzIJM@F24<^]mUX7;dAW3
+S1
+R2
+Z22 w1714248208
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/Com_tb.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/Com_tb.sv
+!i122 42
+L0 1 55
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+n@com_tb
+vComSender
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/ComSender.sv
+R9
+R21
+!i10b 1
+!s100 4JSk1bC6kBL744[Q;1zcJ0
+I49DmF53BBX9zbjCdBb:Y^3
+S1
+R2
+R22
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/ComSender.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/ComSender.sv
+!i122 43
+L0 1 95
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+n@com@sender
+vcounter
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/counter.sv
+R9
+R16
+!i10b 1
+!s100 nzzAZ[DG_Oej8G9FRYF@n0
+I9?_NDaWIO5M0]AlIi4lNJ3
+S1
+R2
+R18
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/counter.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/counter.sv
+!i122 27
+Z23 L0 1 25
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+vdata_comp
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/data_comp.sv
+R9
+Z24 !s110 1714405865
+!i10b 1
+!s100 zLEPk^235Q3omn<]EJ`4j1
+IYRDOh1joiknQVFJNd2X8:0
+S1
+R2
+R18
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/data_comp.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/data_comp.sv
+!i122 29
+L0 1 9
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+vdata_comp_tb
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/data_comp_tb.sv
+R9
+R24
+!i10b 1
+!s100 m05[FSfa?]QnjoaU_eFG[0
+I^;^4>zUnZ3DTFRAk@`<YO2
+S1
+R2
+R18
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/data_comp_tb.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/data_comp_tb.sv
+!i122 30
+Z25 L0 1 62
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+vdff
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/dff.v
+R24
+!i10b 1
+!s100 dM>GE3J[R01dhgBNF8kn43
+ILSGW?HKV`hjLW^8P8hh^i3
+R2
+R18
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/dff.v
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/dff.v
+!i122 31
+Z26 L0 1 18
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+Z27 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R6
+vdig_core
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/dig_core.sv
+R9
+R10
+!i10b 1
+!s100 ?9iP:X1<NOTZ1=ilT6d^a1
+IK>oaNVH?nHoSLcH2^[BON1
+S1
+R2
+R11
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/dig_core.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/dig_core.sv
+!i122 65
+L0 1 120
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+vdual_PWM
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/PWM/dual_pwm8.sv
+R9
+Z28 !s110 1714405867
+!i10b 1
+!s100 ?ofe7LG=6z6iz8KI]^gV[1
+IUL<XHbz?7W2IU=KzO0ibi0
+S1
+R2
+R17
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/PWM/dual_pwm8.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/PWM/dual_pwm8.sv
+!i122 59
+L0 1 10
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+ndual_@p@w@m
+vdual_pwm8_tb
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/PWM/dual_pwm8_tb.sv
+R9
+R28
+!i10b 1
+!s100 W7zTh<F?LM[=fIW:f?LAo0
+IW3UEbV;BDHl4jK<Oi_:HH1
+S1
+R2
+R17
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/PWM/dual_pwm8_tb.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/PWM/dual_pwm8_tb.sv
+!i122 60
+L0 1 35
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+vLA_dig
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/LA_dig.sv
+R9
+R10
+!i10b 1
+!s100 ZFZN[MnMfe8OjPzY8[FZ<1
+IXc5n5N]=P?6l0hjXh7EX91
+S1
+R2
+R11
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/LA_dig.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/LA_dig.sv
+!i122 72
+L0 1 88
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+n@l@a_dig
+vLA_dig_tb
+Z29 2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/LA_dig_tb_tasks.sv
+R9
+DXx4 work 23 LA_dig_tb_tasks_sv_unit 0 22 TlKBQFTMfBd1OFgC[`6=H0
+Z30 !s110 1714409061
+R13
+r1
+!s85 0
+!i10b 1
+!s100 [a@D8P8=5jecIUUeEkjUF2
+I5FVO7cHdW_M;VnVh21>kC1
+!s105 LA_dig_tb_tasks_sv_unit
+S1
+R2
+Z31 w1714409058
+Z32 8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/LA_dig_tb_tasks.sv
+Z33 F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/LA_dig_tb_tasks.sv
+!i122 77
+L0 49 187
+R14
+31
+!i113 0
+R15
+R6
+n@l@a_dig_tb
+XLA_dig_tb_tasks_sv_unit
+R29
+R9
+R30
+VTlKBQFTMfBd1OFgC[`6=H0
+r1
+!s85 0
+!i10b 1
+!s100 V:@L5zJ83X5b4LVa`57YL2
+ITlKBQFTMfBd1OFgC[`6=H0
+!i103 1
+S1
+R2
+R31
+R32
+R33
+!i122 77
+L0 4 0
+R14
+31
+!i113 0
+R15
+R6
+n@l@a_dig_tb_tasks_sv_unit
+vpll8x
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/pll8x.v
+R10
+!i10b 1
+!s100 LbXXXWa22[l:ESzT[oABl0
+IBZh0ZJR2gQQO7@>njO1OZ1
+R2
+R11
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/pll8x.v
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/pll8x.v
+!i122 67
+L0 2 75
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R27
+R6
+vprot_trig
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/prot_trig.sv
+R9
+R10
+!i10b 1
+!s100 `c`=am_;_?bbg;IjB>_P`2
+I9^jKaFk>S_KYzi0CFUc[L1
+S1
+R2
+R11
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/prot_trig.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/prot_trig.sv
+!i122 68
+R19
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+vpwm8
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/PWM/pwm8.sv
+R9
+R28
+!i10b 1
+!s100 ZaQMJR=0zo99[:eW[8CfT2
+IMXIXfMVB11JmhJER_X9;N3
+S1
+R2
+R11
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/PWM/pwm8.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/PWM/pwm8.sv
+!i122 61
+L0 1 30
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+vpwm8_tb
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/PWM/pwm8_tb.sv
+R9
+R28
+!i10b 1
+!s100 khS?e`CcaRU2AE@CU@UbX2
+IoC`9BOJnMGVFVC3o82aF32
+S1
+R2
+R22
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/PWM/pwm8_tb.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/PWM/pwm8_tb.sv
+!i122 62
+Z34 L0 1 29
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+vRAMqueue
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/RAMqueue.sv
+R9
+R24
+!i10b 1
+!s100 N>ADW>OI[fQg;j?EAhUU31
+I:Jno8;M;BOcQIO=@REZe90
+S1
+R2
+R11
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/RAMqueue.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/RAMqueue.sv
+!i122 32
+L0 1 40
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+n@r@a@mqueue
+vRAMqueue_tb
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/RAMqueue_tb.sv
+R9
+R24
+!i10b 1
+!s100 YE]bcb@GAHaOBFRLT2YUP2
+Inb6YQaQ[A?Ha7<l]^c`9g2
+S1
+R2
+R17
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/RAMqueue_tb.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/RAMqueue_tb.sv
+!i122 33
+L0 1 54
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+n@r@a@mqueue_tb
+vringOsc
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/ring_osc.sv
+R9
+R24
+!i10b 1
+!s100 iWJJXfHlHWLInLR2o8GZJ0
+IKZ61cE9B[FcC6E5`V@AQa1
+S1
+R2
+R18
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/ring_osc.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/ring_osc.sv
+!i122 34
+L0 1 11
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+nring@osc
+vrst_synch
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/rst_synch.sv
+R9
+R24
+!i10b 1
+!s100 <42^Xf8QTC^gZbH0i^[3k3
+IPFNg?_enMz^T7GnHBV?Ub1
+S1
+R2
+R18
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/rst_synch.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/rst_synch.sv
+!i122 36
+R26
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+vSPI_RX
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SPI/SPI_RX.sv
+R9
+R28
+!i10b 1
+!s100 hzE_SF;Zz7Dl:mJDaKHza2
+IPQFfj2U5cK=dOlPeeGWM30
+S1
+R2
+R11
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SPI/SPI_RX.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SPI/SPI_RX.sv
+!i122 58
+L0 1 99
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+n@s@p@i_@r@x
+vSPI_tb
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SPI/SPI_tb.sv
+R9
+R10
+!i10b 1
+!s100 2LMGGMSaca3IlM5:`kc7Z1
+Ihh6M[j=c0RP1>n^EgQ>773
+S1
+R2
+R17
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SPI/SPI_tb.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SPI/SPI_tb.sv
+!i122 70
+R20
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+n@s@p@i_tb
+vSPI_TX
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SPI/SPI_TX.sv
+R9
+R10
+!i10b 1
+!s100 ^[PjFa=lWPZL93`l^1?=P0
+IGdQ8AKb3aI765Z=F1_GWT0
+S1
+R2
+R17
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SPI/SPI_TX.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SPI/SPI_TX.sv
+!i122 71
+L0 8 128
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+n@s@p@i_@t@x
+vss_A2D
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SS_A2D/ss_A2D.v
+R28
+!i10b 1
+!s100 :Ai<;01Wg_][DzgkH^AbA3
+IcS@X<F3YaJ4=6HFgV`=IN1
+R2
+R17
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SS_A2D/ss_A2D.v
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SS_A2D/ss_A2D.v
+!i122 54
+R23
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R27
+R6
+nss_@a2@d
+vss_A2D_datapath
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SS_A2D/ss_A2D_datapath.v
+R28
+!i10b 1
+!s100 >fi3bZz1Y[E[]::1hV[gR1
+IG5<JKRQV][BXNh4e3DlGb3
+R2
+R17
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SS_A2D/ss_A2D_datapath.v
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SS_A2D/ss_A2D_datapath.v
+!i122 55
+L0 1 97
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R27
+R6
+nss_@a2@d_datapath
+vss_A2D_SM
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SS_A2D/ss_A2D_SM.sv
+R9
+R28
+!i10b 1
+!s100 R2Yd>o3Wlb1<77a<30[GN0
+IUDnV`9mcTZhOE^zbDn@z`1
+S1
+R2
+R17
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SS_A2D/ss_A2D_SM.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SS_A2D/ss_A2D_SM.sv
+!i122 56
+R12
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+nss_@a2@d_@s@m
+vss_A2D_tb
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SS_A2D/ss_A2D_tb.v
+R28
+!i10b 1
+!s100 Pk=Hm`Q`k>O6Ld93@Vc`<1
+IRDTGLoz7H;O9Z`gGzKfnP0
+R2
+R17
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SS_A2D/ss_A2D_tb.v
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/SS_A2D/ss_A2D_tb.v
+!i122 57
+L0 1 50
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R27
+R6
+nss_@a2@d_tb
+vsynch_detect
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/synch_detect.sv
+R9
+R24
+!i10b 1
+!s100 Oh`E>K[aZfz[;HCMILCLJ3
+IVC4CKZSH58N[R9gC947]T0
+S1
+R2
+R18
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/synch_detect.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/synch_detect.sv
+!i122 37
+Z35 L0 1 14
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+vsynch_detect_tb
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/synch_detect_tb.sv
+R9
+R24
+!i10b 1
+!s100 k96Y=]gKCMkPNW^:<i<`C2
+I]7_zPUdi:c[beW14f7M:?3
+S1
+R2
+R18
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/synch_detect_tb.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/synch_detect_tb.sv
+!i122 38
+L0 1 59
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+vtb_ringOsc
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/ringOscTB.sv
+R9
+R24
+!i10b 1
+!s100 mZ_aEPe2QBo0;dXKeZgR_2
+IZEkck4Xo>Z<m`ilfZg:901
+S1
+R2
+R18
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/ringOscTB.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/ringOscTB.sv
+!i122 35
+L0 1 15
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+ntb_ring@osc
+vtrigger
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/trigger.sv
+R9
+R10
+!i10b 1
+!s100 4VS;Nodi^NzhAiR@9mS_>1
+ILz]LnEh=7==iUAK]B_`363
+S1
+R2
+R11
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/trigger.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/Provided/trigger.sv
+!i122 69
+R25
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+vtrigger_logic
+Z36 2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/trigger_logic.sv
+!s105 trigger_logic_sv_unit
+DXx4 work 21 trigger_logic_sv_unit 0 22 dQiEPeUGabDRI^;QWM=mc2
+R9
+R24
+!i10b 1
+!s100 n0`SOnaeXg7efh@_GH2^I0
+IbCdBTWOSnN[P8I03l9`K73
+S1
+R2
+R11
+Z37 8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/trigger_logic.sv
+Z38 F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/trigger_logic.sv
+!i122 39
+Z39 L0 1 23
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+Xtrigger_logic_sv_unit
+R36
+R9
+R24
+VdQiEPeUGabDRI^;QWM=mc2
+r1
+!s85 0
+!i10b 1
+!s100 OZP03n_j[NzU:geoj^X4`1
+IdQiEPeUGabDRI^;QWM=mc2
+!i103 1
+S1
+R2
+R11
+R37
+R38
+!i122 39
+L0 23 0
+R14
+31
+!i113 0
+R15
+R6
+vtrigger_logic_tb
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/trigger_logic_tb.sv
+R9
+R21
+!i10b 1
+!s100 CaOcOjj3;zNeQMZa6]g5C2
+IKjDj63EBAz0?97AD9]]IA0
+S1
+R2
+R18
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/trigger_logic_tb.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/trigger_logic_tb.sv
+!i122 40
+L0 1 75
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+vUART
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/UART.sv
+R9
+R21
+!i10b 1
+!s100 <WKJR4i]_3XNB3=gQNP:12
+Inehkf7icCELoohYLgV9cC1
+S1
+R2
+R22
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/UART.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/UART.sv
+!i122 44
+R39
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+n@u@a@r@t
+vUART_prot
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/UART_prot.sv
+R9
+R21
+!i10b 1
+!s100 eVDKiEMeS=ReV@khE;?^E1
+IeeX0]C0_2`nNngj<Y5:Ol0
+S1
+R2
+R11
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/UART_prot.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/UART_prot.sv
+!i122 45
+L0 1 31
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+n@u@a@r@t_prot
+vUART_rx
+Z40 2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_rx.sv
+R9
+Z41 !s110 1714407917
+!i10b 1
+!s100 b4B>4e6E?ZiecgmMH=JHI1
+I8Xe=6aE?XfB0oGA0CFfG22
+S1
+R2
+Z42 w1714406341
+Z43 8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_rx.sv
+Z44 F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_rx.sv
+!i122 74
+R35
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+n@u@a@r@t_rx
+vUART_rx_cfg_bd
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_rx_cfg_bd.sv
+R9
+R21
+!i10b 1
+!s100 dVkN5>6@XoSJYHcz`zMTI3
+I5aQ9FoPET>IH9WoYmK6D[0
+S1
+R2
+R22
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_rx_cfg_bd.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_rx_cfg_bd.sv
+!i122 48
+L0 1 110
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+n@u@a@r@t_rx_cfg_bd
+vuart_rx_tb
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_tb.sv
+R9
+R21
+!i10b 1
+!s100 K7lz4PYG7gKjQeHhF_hn01
+IMR?I6bZG>3lR`E=zWIj1C1
+S1
+R2
+R22
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_tb.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_tb.sv
+!i122 49
+L0 1 82
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+vUART_tx
+Z45 2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_tx.sv
+R9
+R21
+!i10b 1
+!s100 <3n@j>2RBI;]ZNNPG4c8a2
+IQ>HF^h7=[Xdd2zQ5T2MDl1
+S1
+R2
+R22
+Z46 8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_tx.sv
+Z47 F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_tx.sv
+!i122 50
+L0 1 13
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+n@u@a@r@t_tx
+vUART_tx_cfg_bd
+Z48 2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_tx_cfg_bd.sv
+R9
+R21
+!i10b 1
+!s100 cj7TJ;RMQ^C0h:VYiWm^K2
+I?mA?7jF4Ae<Z:PLGDS>_`2
+S1
+R2
+R22
+Z49 8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_tx_cfg_bd.sv
+Z50 F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_tx_cfg_bd.sv
+!i122 51
+R35
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+n@u@a@r@t_tx_cfg_bd
+vUART_tx_tb
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_tx_tb.sv
+R9
+R28
+!i10b 1
+!s100 ;;f><2eEkKR2U>:eUeboA2
+IdKBJ^Sm1J`g?Q8a<jGUJ_2
+S1
+R2
+R22
+8/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_tx_tb.sv
+F/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/uart_tx_tb.sv
+!i122 52
+L0 1 89
+R13
+R14
+r1
+!s85 0
+31
+!i113 0
+R15
+R6
+n@u@a@r@t_tx_tb
+vUART_wrapper
+2/filespace/b/begos/551/designvision/dv_tutorial/ECE-551-End-of-Semester-Project/UART/UART_wrapper.sv
+R9
+R28
+!i10b 1
+!s100 B5Eb]8a]a=LX4oGfKd<]]3
+IdiAj?:2][T[oI<PM1gSaX2
+S1
+R2
+R22
+8/filespace/b/beg

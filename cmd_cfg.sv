@@ -34,7 +34,8 @@ module cmd_cfg(clk,rst_n,resp,send_resp,resp_sent,cmd,cmd_rdy,clr_cmd_rdy,
   //internal signals
   logic set_addr_ptr, write_en, increment_addr, send_resp_ss;
   logic [7:0] trig_posL;
-  logic [LOG2-9:0] trig_posH;
+  logic [LOG2-1:0] trig_posH, dump_cnt;
+  logic inc_dump, clr_dump;
   //state definition
   typedef enum reg[3:0] {IDLE,WRITE,POSACK,NEGACK,READ,DUMP1,DUMP2, WAIT1, WAIT2 } state_t;
   
@@ -48,6 +49,18 @@ always_ff @(posedge clk, negedge rst_n) begin
         state <= next_state;
 end
 
+always_ff@(posedge clk, negedge rst_n) begin
+  if(!rst_n)
+    dump_cnt <= 0;
+  else if(inc_dump)
+    dump_cnt <= dump_cnt +1;
+  else if(clr_dump)
+    dump_cnt <= '0;
+  else
+    dump_cnt <= dump_cnt;
+
+end
+
  // State Machine
 always_comb begin
 
@@ -58,6 +71,8 @@ always_comb begin
   increment_addr = 1'b0;
   clr_cmd_rdy = 1'b0;
   next_state = state;
+  inc_dump = 1'b0;
+  clr_dump = 1'b0;
 
   case (state)
     IDLE: begin
@@ -126,6 +141,7 @@ always_comb begin
       else begin
         next_state = DUMP2;
         send_resp_ss = 1'b1;
+        
       end
       case(cmd[10:8]) 
         3'b001: resp = rdataCH1;
@@ -143,6 +159,14 @@ always_comb begin
       if (resp_sent) begin
         next_state = DUMP1;
       end
+
+
+      case (cmd [15:14])
+          2'b00: next_state = READ;
+          2'b01: next_state = WRITE;
+          default: next_state = next_state;
+        endcase
+
     end
     WAIT1: begin
       set_addr_ptr = 0;

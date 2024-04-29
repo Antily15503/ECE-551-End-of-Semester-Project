@@ -1,110 +1,146 @@
-module UART_rx_cfg_bd(clk,rst_n,clr_rdy,RX,rx_data,rdy, baud, match, mask, UARTtrig);
-// UART Receiver
-
-input clk, rst_n;
-input RX, clr_rdy, match, mask; 
-output reg rdy; 
-output reg [7:0] rx_data;
-output UARTtrig;
-input [15:0] baud; 
-
+module UART_rx_cfg_bd(clk, rst_n, RX, rdy, rx_data, clr_rdy, baud, match, mask, UARTtrig);
+	input clk, rst_n, RX, clr_rdy;
+    input [7:0] match, mask;
+    output UARTtrig;
+    input[15:0] baud;
+	output rdy;
+	output[7:0] rx_data;
+	wire receiving, shift, busy, clr_busy, start, set_ready;
+	wire[3:0] bit_cnt;
 assign UARTtrig = (((rx_data | mask) == (match | mask)) ? 1 : 0) & rdy;
-
-
-    typedef enum logic {IDLE,RECEIVING} state_t;
-    state_t state, next_state;
 	
-	// Internal signal declarations
-    logic [15:0] baud_cnt; // baud rate counter
-    logic [3:0] bit_cnt; // bit counter
-    logic [8:0] rx_shift_reg; // Shift register
-	logic shift, start, receiving, set_rdy;
-	logic df1_RX, df2_RX;
-	
-	// Double flopped RX to address meta-stability
-	always_ff @(posedge clk) begin
-        if (!rst_n) begin	
-            df1_RX <= 1'b1;
-			df2_RX <= 1'b1;
-        end else begin
-            df1_RX <= RX;
-			df2_RX <= df1_RX;
-		end
-    end
-	
-    // State Machine
-    always_ff @(posedge clk, negedge rst_n) begin
-        if (!rst_n) 
-            state <= IDLE;
-        else
-            state <= next_state;
-    end
-
-    // State transitions
-    always_comb begin
-	// default outputs
-	start = 0;
-	receiving = 0;
-	set_rdy = 0;
-	next_state = IDLE;
-        case (state)
-			IDLE: begin  // Idle state waiting for start bit (falling edge)	               
-                if (!df2_RX) begin
-					start = 1'b1;
-                    next_state = RECEIVING;
-                end 
-            end
-            RECEIVING: begin	// Receiving data bits state
-                if (bit_cnt == 4'd10) begin 	// After stop bit is received
-                    set_rdy = 1'b1;
-                    next_state = IDLE;
-                end else begin		// Continue receiving data
-					receiving = 1'b1;
-					next_state = RECEIVING;
-				end
-            end			
-        endcase
-    end
-	
-	// Shift register logic
-    always_ff @(posedge clk, negedge rst_n) begin 
-        if (shift) 
-            rx_shift_reg <= {df2_RX,rx_shift_reg[8:1]};
-    end 
-	
-	// Assign the lower 8 bits of the shift register to the output data
-	assign rx_data = rx_shift_reg[7:0];
-
-    // Baud rate counter
-    always_ff @(posedge clk) begin
-        if (start)		// Initialize baud counter for first data bit sampling
-			baud_cnt <= baud >> 1;	
-		else if (shift) 	// Reload baud counter for subsequent bit sampling
-			baud_cnt <= baud;
-		else if (receiving)
-			baud_cnt <= baud_cnt - 1'b1; 
-    end
-	
-	// Generate shift signal based on baud counter reaching zero
-	assign shift = (baud_cnt == 6'h0); 
-
-    // Bit counter logic
-    always_ff @(posedge clk) begin
-        if (start) begin
-            bit_cnt <= 4'h0;
-        end else if (shift) begin
-            bit_cnt <= bit_cnt + 1'b1;
-        end
-    end
-     
-    // rdy logic
-    always_ff @(posedge clk, negedge rst_n) begin
-        if (!rst_n)
-            rdy <= 1'b0;
-        else if (start || clr_rdy)	// On start bit detection or clear ready signal
-            rdy <= 1'b0;
-        else if (set_rdy)	// Data ready
-            rdy <= 1'b1;
-    end
-
+	UARTRxSm statemachine(.clk(clk), .rst_n(rst_n), .shift(shift), .receiving(receiving), 
+                    .busy(busy), .clr_busy(clr_busy), .start(start), .bit_cnt(bit_cnt), .set_ready(set_ready));
+	UARTRxDpCfgBd datapath(.clk(clk), .rst_n(rst_n), .start(start), .receiving(receiving),
+						.shift(shift), .rx_data(rx_data), .RX(RX), .clr_busy(clr_busy), .busy(busy), 
+						.bit_cnt(bit_cnt), .set_ready(set_ready), .clr_rdy(clr_rdy), .ready(rdy), .baudCntA(baud));
 endmodule
+
+module UARTRxDpCfgBd(clk, rst_n, start, receiving, shift, rx_data,
+				RX, clr_busy, busy, bit_cnt, set_ready, clr_rdy, ready, baudCntA);
+
+	input clk, rst_n, start, receiving, RX, clr_busy, set_ready, clr_rdy;
+    input[15:0] baudCntA;
+	output logic shift, busy, ready;
+	output logic[7:0] rx_data;
+	output logic[3:0] bit_cnt;
+	logic[9:0] shift_reg;
+	logic[15:0] baud_cnt;
+	logic rx_in1, rx_in2;
+	
+	always_ff @(posedge clk, negedge rst_n) begin
+		if(!rst_n) begin
+			baud_cnt <= '0;
+		end
+		else begin
+			casex({shift, receiving})
+				2'b0_0: baud_cnt <= baud_cnt;
+				2'b0_1: baud_cnt <= baud_cnt + 1;
+				2'b1_x: baud_cnt <= 0;
+			endcase
+		end
+	end
+	
+	always_ff @(posedge clk) begin
+			 //set busy
+            if(!rx_in1 & rx_in2) begin
+                busy <= 1;
+            end
+            else if(clr_busy) begin
+                busy <= 0;
+            end
+            else begin
+                busy <= busy;
+            end
+	end
+
+	always_ff @(posedge clk) begin
+    //set ready
+            if(clr_rdy || start) begin
+                ready <= 0;
+            end
+            else if(set_ready) begin
+                ready <= 1;
+            end
+            else begin
+                ready <= ready;
+            end
+
+	end
+
+	always_ff@(posedge clk) begin
+			rx_in1 <= RX;
+			rx_in2 <= rx_in1;
+	end
+
+	always_ff@(posedge clk, negedge rst_n)begin
+		if(!rst_n)begin
+			shift_reg <= 10'd0;
+		end
+		else begin
+			casex(shift)
+				1'b0: shift_reg <= shift_reg;
+				1'b1: shift_reg <= {RX, shift_reg[9:1]};
+			endcase
+		end
+	end
+
+	always_ff@(posedge clk) begin
+		if(!rst_n)begin
+			rx_data <= '0;
+		end
+		casex(bit_cnt)
+			9: rx_data <= shift_reg[8:1];
+			default: rx_data <= rx_data;
+		endcase
+
+	end
+	always_ff @(posedge clk, negedge rst_n) begin
+		if(!rst_n) begin
+			bit_cnt <= '0;
+        end
+		else begin
+			casex({start, shift})
+				2'b0_0: bit_cnt <= bit_cnt;
+				2'b0_1: bit_cnt <= bit_cnt + 1;
+				default: bit_cnt <= 0;
+			endcase
+		end
+	end
+
+	always_comb begin
+		// Wait for 1.5 cycles
+		if(bit_cnt == 0)
+			if(baud_cnt == baudCntA * 1.5)
+				shift = 1;
+			else	
+				shift = 0;
+		// Wait for 1 cycle
+		else
+			if(baud_cnt == baudCntA)
+				shift = 1;
+			else
+				shift = 0;
+	end	
+	
+endmodule
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

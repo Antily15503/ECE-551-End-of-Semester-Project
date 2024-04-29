@@ -51,14 +51,8 @@ set_clock_uncertainty 0.2 iCLKRST/clk
 compile -map_effort high
 # flatten the design and compiles again #
 ungroup -all -flatten
-compile -map_effort medium
-
-# holds signals for holding delays #
-set_fix_hold [find net clk]
-set_fix_hold clk400MHz
-set_fix_hold smpl_clk
-
-compile -only_hold_time
+set_fix_hold clk
+compile -map_effort high
 
 # generates a min_delay, max_delay, and area report #
 report_timing -delay min > min_timing.txt

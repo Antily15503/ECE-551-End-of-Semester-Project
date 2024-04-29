@@ -9,7 +9,7 @@ always_ff @(posedge clk, negedge rst_n) begin
     if(!rst_n) begin
         triggered <= 0;
     end
-    else if(CH1Trig && CH2Trig && CH3Trig && CH4Trig && CH5Trig && armed && ~set_capture_done) begin
+    else if(CH1Trig && CH2Trig && CH3Trig && CH4Trig && CH5Trig && armed && ~set_capture_done && protTrig) begin
         triggered <= 1;
     end
     else if((triggered == 1) && ~set_capture_done) begin

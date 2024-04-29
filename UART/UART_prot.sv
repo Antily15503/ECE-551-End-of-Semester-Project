@@ -6,26 +6,12 @@ input [7:0] mask, match;
 
 output logic UARTtrig;
 
-logic [7:0] uart;
+UART_rx_cfg_bd iRxCfgBd(.clk(clk), .rst_n(rst_n), .clr_rdy(1'b0), .rdy(), .RX(RX), .rx_data(), .baud(baud_cnt), .match(match), .mask(mask), .UARTtrig(UARTtrig));
 
-always_ff@(posedge clk, negedge rst_n) begin
-    if(!rst_n) begin
-        uart <= 0;
-    end
-    else begin
-        uart <= {{uart[6:0]}, RX};
-    end
-
-end
-always_ff@(posedge clk, negedge rst_n) begin
-    if(!rst_n)
-        UARTtrig <= 0;
-    else begin
-        UARTtrig <= ((uart | mask) == (mask | match));
-    end
-end
 
 
 
 
 endmodule
+
+

@@ -18,6 +18,7 @@ always_ff @(posedge CH_Hff5, negedge armed) begin
 		bit4_ff1 <= 1'b1;
     end
 end
+
 //Double flop bit 4
 always_ff @(posedge clk) begin
 		bit4_ff2 <= bit4_ff1;

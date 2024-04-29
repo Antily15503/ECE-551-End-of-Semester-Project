@@ -42,7 +42,7 @@ module capture(clk,rst_n,wrt_smpl,run,capture_done,triggered,trig_pos,
       waddr <= 0;
     end
     else if(clr_waddr)
-      waddr<=0;
+      waddr<= '0;
     else if(inc_waddr)
       waddr <= waddr + 1;
 
@@ -134,6 +134,7 @@ end
       DONE: begin
         if(!capture_done) begin
           nxt_state = IDLE;
+          deassert_capture = 1; 
         end
         else begin
           nxt_state = DONE;

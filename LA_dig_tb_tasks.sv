@@ -1,7 +1,5 @@
 `timescale 1ns / 100ps
-module LA_dig_tb();
-	`include “tasks.sv”;
-			
+
 //// Interconnects to DUT/support defined as type wire /////
 wire clk400MHz,locked;			// PLL output signals to DUT
 wire clk;						// 100MHz clock generated at this level from clk400MHz
@@ -41,8 +39,15 @@ integer mismatches;	// number of mismatches when comparing results to expected
 integer sample;		// sample counter in dump & compare
 
 /////////////////////////////////
-localparam UART_triggering = 1'b0;	// set to true if testing UART based triggering
-localparam SPI_triggering = 1'b0;	// set to true if testing SPI based triggering
+logic UART_triggering = 1'b0;	// set to true if testing UART based triggering
+logic SPI_triggering = 1'b0;	// set to true if testing SPI based triggering
+
+//test bench signals for UART_tx_cfg_bd
+logic [7:0] UART_tx_cfg_bd_data;
+logic tx_done;
+
+module LA_dig_tb_tasks();
+
 
 assign AFE_clk = en_AFE & clk400MHz;
 ///// Instantiate Analog Front End model (provides stimulus to channels) ///////
@@ -91,9 +96,7 @@ ComSender iSNDR(.clk(clk), .rst_n(RST_n), .RX(TX), .TX(RX),
 // Instantiate transmitter as source for protocol triggering //
 //////////////////////////////////////////////////////////////
 
-//test bench signals for UART_tx_cfg_bd
-logic [7:0] UART_tx_cfg_bd_data;
-logic tx_done;
+
 
 UART_tx_cfg_bd iTX(.clk(clk), .rst_n(RST_n), .TX(tx_prot), .trmt(strt_tx),
             .tx_data(UART_tx_cfg_bd_data), .tx_done(tx_done), .baud(16'h006C));	// 921600 Baud
@@ -124,7 +127,7 @@ initial begin
   ////// Leave all other registers at their default /////
   ////// and set RUN bit, but enable AFE first //////
     en_AFE = 1;
-	send_command(16'h4013);		// set the run bit, keep protocol triggering off
+	  send_command(16'h4013);		// set the run bit, keep protocol triggering off
 
     //////////////////////////////////////
     // Now wait for command to be sent //
@@ -146,7 +149,7 @@ initial begin
     ////////////////////////////////////
     @(posedge cmd_sent);
     @(posedge clk);
-
+    UART_triggering = 1'b1;	
   //// Now collect CH1 dump into a file ////
     /// task??? ////
     for (sample=0; sample<384; sample++)
@@ -171,6 +174,18 @@ initial begin
   repeat(10) @(posedge clk);
   $fclose(fptr1);
   
+
+    //stop dumping
+  	send_command(16'h0000);
+    UART_triggering = 1'b1;	
+
+    //////////////////////////////////////
+    // Now wait for command to be sent //
+    ////////////errors////////////////////////
+    @(posedge cmd_sent);
+    @(posedge clk);
+
+
   //// Now compare CH1dmp.txt to expected results ////
   fexp = $fopen("test1_expected.txt","r");
   fptr1 = $fopen("CH1dmp.txt","r");
@@ -196,21 +211,54 @@ initial begin
 
   //TEST 2: testing UART_triggering
 
+  
+  repeat(400) @(posedge clk);
+
+    ////// Disable CH1 Triggering //////
+	send_command(16'h4101);
+    //////////////////////////////////////
+    // Now wait for command to be sent //
+    ////////////////////////////////////
+    @(posedge cmd_sent);
+    @(posedge clk);
+
   ////// Setting UART baud_cnt to 9600 //////
-  send_command({2'b01, 6'hC8, 8'd9600});
+  // send_command({2'b01, 6'hC8, 8'd9600});
+  // //waiting for command to be recieved
+  // @(posedge cmd_sent);
+  // @(posedge clk);
+  // //check for posACK
+
+  ////// Set Baud L//////
+  send_command({2'b01, 6'h0E, 8'h6C});
   //waiting for command to be recieved
   @(posedge cmd_sent);
   @(posedge clk);
-  //check for posACK
+
+    ////// Set Baud H//////
+  send_command({2'b01, 6'h0D, 8'h00});
+  //waiting for command to be recieved
+  @(posedge cmd_sent);
+  @(posedge clk);
+
+
+
+
+  ////// Set run bit, enable uart triggering//////
+  send_command(16'h4012);
+  //waiting for command to be recieved
+  @(posedge cmd_sent);
+  @(posedge clk);
+
 
   ////// Setting maskL bits to 0x4a //////
-  send_command({2'b01, 6'h0A, 8'h4a});
+  send_command({2'b01, 6'h0A, 8'h4A});
   //waiting for command to be recieved
   @(posedge cmd_sent);
   @(posedge clk);
   //check for posACK
 
-  ////// Setting mask bits to 0000 //////
+  ////// Setting match bits to 0000 //////
   send_command({2'b01, 6'h0C, 8'h00});
   //waiting for command to be recieved
   @(posedge cmd_sent);
@@ -219,7 +267,8 @@ initial begin
 
   //setting the UART triggering bit to 1
   @(posedge clk);
-    // UART_triggering = 1'b1;
+  
+    uart_trig_polling();
 
   $display("YAHOO! comparison completed, test1 passed!");
   
@@ -230,3 +279,119 @@ always
   #100 REF_CLK = ~REF_CLK;
 
 endmodule	
+
+
+task rst_init();	
+	begin
+		send_cmd = 0;
+		REF_CLK = 0;
+		RST_n = 0;						// assert reset
+		repeat (2) @(posedge REF_CLK);
+		@(negedge REF_CLK);				// on negedge REF_CLK after a few REF clocks
+		RST_n = 1;						// deasert reset
+		@(negedge REF_CLK);
+	end
+endtask
+
+task send_command(input [15:0] cmd2send);	
+	begin
+		host_cmd = cmd2send;		
+		@(posedge clk);
+		send_cmd = 1;
+		@(posedge clk);
+		send_cmd = 0;
+	end
+endtask
+task wait_resp();	
+	begin
+		@(posedge resp_rdy)
+	    if (resp&8'h20)				// capture_done bits set?
+	      capture_done_bit = 1'b1;
+	    clr_resp_rdy = 1;
+	    @(posedge clk);
+	    clr_resp_rdy = 0;
+	end
+endtask
+
+task polling_done();	
+	begin
+		capture_done_bit = 1'b0;			// capture_done not set yet
+	loop_cnt = 0;
+
+  	while (!capture_done_bit)
+	  begin
+	    repeat(400) @(posedge clk);		// delay a while between reads
+	    loop_cnt = loop_cnt + 1;
+	    if (loop_cnt>200) begin
+	      $display("ERROR: capture done bit never set");
+	      $stop();
+	    end
+            host_cmd = {8'h00,8'h00};	// read TRIG_CFG which has capture_done bit
+            @(posedge clk);
+            send_cmd = 1;
+            @(posedge clk);
+            send_cmd = 0;
+            // wait for command to be sent 
+            @(posedge cmd_sent);
+	    // Call wait_resp task
+	    wait_resp();
+	  end
+	$display("INFO: capture_done bit is set");
+	end
+endtask
+
+
+task uart_trig_polling();
+	begin
+
+    logic [15:0] uart_cmd;
+    uart_cmd = 16'b0;
+		capture_done_bit = 1'b0;			// capture_done not set yet
+	  loop_cnt = 0;
+  	while (!capture_done_bit)
+	  begin
+	    repeat(400) @(posedge clk);		// delay a while between reads
+	    loop_cnt = loop_cnt + 1;
+      uart_cmd = uart_cmd + 1;
+	    if (loop_cnt>27) begin
+	      $display("ERROR: capture done bit never set");
+	      $stop();
+	    end
+            UART_tx_cfg_bd_data = uart_cmd;
+
+            strt_tx = 1'b1;
+            @(posedge clk);
+            strt_tx = 1'b0;
+            @(posedge tx_done);
+            @(posedge clk);
+
+            host_cmd = 16'd0;	// read TRIG_CFG which has capture_done bit
+            @(posedge clk);
+            send_cmd = 1;
+            @(posedge clk);
+            send_cmd = 0;
+            // wait for command to be sent 
+            @(posedge cmd_sent);
+
+
+
+
+	    // Call wait_resp task
+	    wait_resp();
+	  end
+
+    if(uart_cmd != 16'h004A) begin
+    $display("Error: uart triggerd off bad cmd, %h", uart_cmd);
+    $stop;
+
+  end
+	$display("INFO: capture_done bit is set");
+  
+	end
+
+
+
+endtask
+
+
+
