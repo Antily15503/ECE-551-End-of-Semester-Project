@@ -53,6 +53,13 @@ compile -map_effort high
 ungroup -all -flatten
 compile -map_effort medium
 
+# holds signals for holding delays #
+set_fix_hold [find net clk]
+set_fix_hold clk400MHz
+set_fix_hold smpl_clk
+
+compile -only_hold_time
+
 # generates a min_delay, max_delay, and area report #
 report_timing -delay min > min_timing.txt
 report_timing -delay max > max_timing.txt
