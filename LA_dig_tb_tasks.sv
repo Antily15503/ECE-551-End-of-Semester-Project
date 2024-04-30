@@ -174,20 +174,22 @@ initial begin
   uart_trig_polling();
 
   $display("UART Test 1 Passed");
+  
   repeat(400) @(posedge clk);
 
   //Test again with different baud, different match
   uart_match = 8'h22;
-  uart_baud = 16'h002F;
+  uart_baud = 16'h002E;
 
+  ////// Setting maskL //////
+  send_command({2'b01, 6'h0A, {uart_match}});
+  ////// Set run bit, enable uart triggering//////
+  send_command(16'h4012);
   ////// Set Baud L//////
   send_command({2'b01, 6'h0E, {uart_baud[7:0]}});
   ////// Set Baud H//////
   send_command({2'b01, 6'h0D, {uart_baud[15:8]}});
-  ////// Set run bit, enable uart triggering//////
-  send_command(16'h4012);
-  ////// Setting maskL //////
-  send_command({2'b01, 6'h0A, {uart_match}});
+ 
   uart_trig_polling();
 
 
@@ -216,12 +218,12 @@ initial begin
   send_command({2'b01, 6'h09, 8'h00});
   spi_trig_polling();
 
-  $display("Spi Test 1 Passed");
+  $display("SPI Test 1 Passed");
   repeat(400) @(posedge clk);
 
 
   //Test again with different match, pos edge trigger
-  spi_match = 16'h0100;
+  spi_match = 16'h00A2;
   //16 bit word, neg edge trigger
   send_command({2'b01, 6'h00, 8'h11});
   ////// Setting maskL //////
