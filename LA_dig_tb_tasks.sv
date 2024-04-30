@@ -43,10 +43,9 @@ logic UART_triggering = 1'b0;	// set to true if testing UART based triggering
 logic SPI_triggering = 1'b0;	// set to true if testing SPI based triggering
 
 //test bench signals for UART_tx_cfg_bd
-logic [7:0] UART_tx_cfg_bd_data;
+logic [7:0] UART_tx_cfg_bd_data, uart_match;
 logic tx_done;
-
-
+logic [15:0] spi_tx_data, spi_match;
 
 module LA_dig_tb_tasks();
 
@@ -98,16 +97,16 @@ ComSender iSNDR(.clk(clk), .rst_n(RST_n), .RX(TX), .TX(RX),
 // Instantiate transmitter as source for protocol triggering //
 //////////////////////////////////////////////////////////////
 
-
+logic [15:0] uart_baud;
 
 UART_tx_cfg_bd iTX(.clk(clk), .rst_n(RST_n), .TX(tx_prot), .trmt(strt_tx),
-            .tx_data(UART_tx_cfg_bd_data), .tx_done(tx_done), .baud(16'h006C));	// 921600 Baud
+            .tx_data(UART_tx_cfg_bd_data), .tx_done(tx_done), .baud(uart_baud));	// 921600 Baud
 					 
 ////////////////////////////////////////////////////////////////////
 // Instantiate SPI transmitter as source for protocol triggering //
 //////////////////////////////////////////////////////////////////
 SPI_TX iSPI(.clk(clk),.rst_n(RST_n),.SS_n(SS_n),.SCLK(SCLK),.wrt(strt_tx),.done(done),
-            .tx_data(16'hABCD),.MOSI(MOSI),.pos_edge(1'b0),.width8(1'b0));
+            .tx_data(spi_tx_data),.MOSI(MOSI),.pos_edge(1'b0),.width8(1'b0));
 
 initial begin
   fptr1 = $fopen("CH1dmp.txt","w");			// open file to write CH1 dumps to
@@ -116,84 +115,140 @@ initial begin
   strt_tx = 0;						// do not initiate protocol trigger for now
   
   //// Initialization////
-    rst_init();
+  rst_init();
+
   ////// Set for CH1 triggering on positive edge //////
 	send_command(16'h4110);
-    //////////////////////////////////////
-    // Now wait for command to be sent //
-    ////////////////////////////////////
-    @(posedge cmd_sent);
-    @(posedge clk);
-	/// should probably be checking for posAck here ///
 	
   ////// Leave all other registers at their default /////
   ////// and set RUN bit, but enable AFE first //////
-    en_AFE = 1;
-	  send_command(16'h4013);		// set the run bit, keep protocol triggering off
-
-    //////////////////////////////////////
-    // Now wait for command to be sent //
-    ////////////errors////////////////////////
-    @(posedge cmd_sent);
-    @(posedge clk);
-	/// should probably be checking for posAck here ///
+  en_AFE = 1;
+  send_command(16'h4013);		// set the run bit, keep protocol triggering off
 
   //// Now read trig config polling for capture_done bit to be set ////
-    polling_done();
-    //// Now request CH1 dump ////
-    host_cmd = {8'h81,8'h00};				// dump CH1 results
-    @(posedge clk);
-    send_cmd = 1;
-    @(posedge clk);
-    send_cmd = 0;
-    //////////////////////////////////////
-    // Now wait for command to be sent //
-    ////////////////////////////////////
-    @(posedge cmd_sent);
-    @(posedge clk);
-    UART_triggering = 1'b1;	
+  polling_done();
+
+  //// Now request CH1 dump ////
+  send_command({8'h81,8'h00});
+
+  //turn on uart triggering so uart_cfg_bd has time to clear
+  UART_triggering = 1'b1;	
+
+
   //// Now collect CH1 dump into a file ////
     /// task??? ////
-    for (sample=0; sample<384; sample++)
-      fork
-        begin: timeout1
-	      repeat(6000) @(posedge clk);
-	      $display("ERR: Only received %d of 384 bytes on dump",sample);
-		  $stop();
-	      sample = 384;		// break out of loop
-	    end
-	    begin
-	      @(posedge resp_rdy);
-	      disable timeout1;
-              $fdisplay(fptr1,"%h",resp);	// write to CH1dmp.txt
-	      clr_resp_rdy = 1;
-	      @(posedge clk);
-	      clr_resp_rdy = 0;
-	      if (sample%32==0) $display("At sample %d of dump",sample);
-	    end
-      join
+  channel_dump();
   
   repeat(10) @(posedge clk);
   $fclose(fptr1);
   
 
-    //stop dumping
-  	send_command(16'h0000);
-    UART_triggering = 1'b1;	
-
-    //////////////////////////////////////
-    // Now wait for command to be sent //
-    ////////////errors////////////////////////
-    @(posedge cmd_sent);
-    @(posedge clk);
+  //stop dumping
+  send_command(16'h0000);
+  UART_triggering = 1'b1;	
 
 
   //// Now compare CH1dmp.txt to expected results ////
+  dump_compare();
+  $display("Channel Trig Test Passed");
+  repeat(400) @(posedge clk);
+
+
+
+  //TEST 2: testing UART_triggering
+  uart_match = 8'h1A;
+  uart_baud = 16'h006C;
+
+  ////// Disable CH1 Triggering //////
+  send_command(16'h4101);
+  ////// Set Baud L//////
+  send_command({2'b01, 6'h0E, {uart_baud[7:0]}});
+  ////// Set Baud H//////
+  send_command({2'b01, 6'h0D, {uart_baud[15:8]}});
+  ////// Set run bit, enable uart triggering//////
+  send_command(16'h4012);
+  ////// Setting maskL //////
+  send_command({2'b01, 6'h0A, {uart_match}});
+  ////// Setting match bits to 0000 //////
+  send_command({2'b01, 6'h0C, 8'h00});
+  uart_trig_polling();
+
+  $display("UART Test 1 Passed");
+  repeat(400) @(posedge clk);
+
+  //Test again with different baud, different match
+  uart_match = 8'h22;
+  uart_baud = 16'h002F;
+
+  ////// Set Baud L//////
+  send_command({2'b01, 6'h0E, {uart_baud[7:0]}});
+  ////// Set Baud H//////
+  send_command({2'b01, 6'h0D, {uart_baud[15:8]}});
+  ////// Set run bit, enable uart triggering//////
+  send_command(16'h4012);
+  ////// Setting maskL //////
+  send_command({2'b01, 6'h0A, {uart_match}});
+  uart_trig_polling();
+
+
+
+  $display("UART Test 2 Passed");
+
+  repeat(400) @(posedge clk);
+
+
+
+  //TEST 3: Testing SPI Triggering
+  UART_triggering = 0;
+  SPI_triggering = 1;
+  spi_match = 16'h001A;
+
+
+  //16 bit word, neg edge trigger
+  send_command({2'b01, 6'h00, 8'h15});
+  ////// Setting maskL //////
+  send_command({2'b01, 6'h0A, {spi_match[7:0]}});
+  ////// Setting maskH bits to 0x00 //////
+  send_command({2'b01, 6'h0B, {spi_match[15:8]}});
+  ////// Setting matchL bits to 0000 //////
+  send_command({2'b01, 6'h0C, 8'h00});
+  ////// Setting matchH bits to 0000 //////
+  send_command({2'b01, 6'h09, 8'h00});
+  spi_trig_polling();
+
+  $display("Spi Test 1 Passed");
+  repeat(400) @(posedge clk);
+
+
+  //Test again with different match, pos edge trigger
+  spi_match = 16'h0100;
+  //16 bit word, neg edge trigger
+  send_command({2'b01, 6'h00, 8'h11});
+  ////// Setting maskL //////
+  send_command({2'b01, 6'h0A, {spi_match[7:0]}});
+  ////// Setting maskH bits to 0x00 //////
+  send_command({2'b01, 6'h0B, {spi_match[15:8]}});
+  spi_trig_polling();
+  $display("SPI Test 2 Passed");
+
+
+  $display("YAHOO! ALL TESTS PASSED!");
+  
+  $stop();
+end
+
+
+
+always
+  #100 REF_CLK = ~REF_CLK;
+
+endmodule	
+
+task dump_compare();
   fexp = $fopen("test1_expected.txt","r");
   fptr1 = $fopen("CH1dmp.txt","r");
   found_res = $fscanf(fptr1,"%h",res);
   found_expected = $fscanf(fexp,"%h",exp);
-  $display("Starting comparison for CH1");
   sample = 1;
   mismatches = 0;
   while (found_expected==1) begin
@@ -210,63 +265,7 @@ initial begin
     found_res = $fscanf(fptr1,"%h",res);
     found_expected = $fscanf(fexp,"%h",exp);
   end	
-
-  //TEST 2: testing UART_triggering
-  repeat(400) @(posedge clk);
-
-    ////// Disable CH1 Triggering //////
-	send_command(16'h4101);
-    //////////////////////////////////////
-    // Now wait for command to be sent //
-    ////////////////////////////////////
-    @(posedge cmd_sent);
-    @(posedge clk);
-
-
-  ////// Set Baud L//////
-  send_command({2'b01, 6'h0E, 8'h6C});
-  //waiting for command to be recieved
-  @(posedge cmd_sent);
-  @(posedge clk);
-
-    ////// Set Baud H//////
-  send_command({2'b01, 6'h0D, 8'h00});
-  //waiting for command to be recieved
-  @(posedge cmd_sent);
-  @(posedge clk);
-
-
-  ////// Set run bit, enable uart triggering//////
-  send_command(16'h4012);
-  //waiting for command to be recieved
-  @(posedge cmd_sent);
-  @(posedge clk);
-
-
-  ////// Setting maskL bits to 0x4a //////
-  send_command({2'b01, 6'h0A, 8'h1A});
-  //waiting for command to be recieved
-  @(posedge cmd_sent);
-  @(posedge clk);
-
-  ////// Setting match bits to 0000 //////
-  send_command({2'b01, 6'h0C, 8'h00});
-  //waiting for command to be recieved
-  @(posedge cmd_sent);
-  @(posedge clk);
-  
-    uart_trig_polling();
-
-  $display("YAHOO! comparison completed, test1 passed!");
-  
-  $stop();
-end
-
-always
-  #100 REF_CLK = ~REF_CLK;
-
-endmodule	
-
+endtask
 
 task rst_init();	
 	begin
@@ -287,6 +286,9 @@ task send_command(input [15:0] cmd2send);
 		send_cmd = 1;
 		@(posedge clk);
 		send_cmd = 0;
+    @(posedge cmd_sent);
+    @(posedge clk);
+
 	end
 endtask
 task wait_resp();	
@@ -323,7 +325,6 @@ task polling_done();
 	    // Call wait_resp task
 	    wait_resp();
 	  end
-	$display("INFO: capture_done bit is set");
 	end
 endtask
 
@@ -340,7 +341,7 @@ task uart_trig_polling();
 	    repeat(400) @(posedge clk);		// delay a while between reads
 	    loop_cnt = loop_cnt + 1;
       uart_cmd = uart_cmd + 1;
-	    if (loop_cnt>27) begin
+	    if (loop_cnt>200) begin
 	      $display("ERROR: capture done bit never set");
 	      $stop();
 	    end
@@ -363,14 +364,77 @@ task uart_trig_polling();
 	    wait_resp();
 	  end
 
-    if(uart_cmd != 16'h001A) begin
-      $display("Error: uart triggerd off bad cmd, %h", uart_cmd);
+    if(uart_cmd != uart_match) begin
+      $display("Error: UART triggerd off bad cmd, %h", uart_cmd);
       $stop;
     end
   
 	end
+endtask
 
 
+
+task spi_trig_polling();
+	begin
+
+    logic [15:0] spi_cmd;
+    spi_cmd = 16'b0;
+		capture_done_bit = 1'b0;			// capture_done not set yet
+	  loop_cnt = 0;
+  	while (!capture_done_bit)
+	  begin
+	    repeat(400) @(posedge clk);		// delay a while between reads
+	    loop_cnt = loop_cnt + 1;
+      spi_cmd = spi_cmd + 1;
+	    if (loop_cnt>200) begin
+	      $display("ERROR: capture done bit never set");
+	      $stop();
+	    end
+            spi_tx_data = spi_cmd;
+
+            strt_tx = 1'b1;
+            @(posedge clk);
+            strt_tx = 1'b0;
+            @(posedge tx_done);
+            @(posedge clk);
+
+            host_cmd = 16'd0;	// read TRIG_CFG which has capture_done bit
+            @(posedge clk);
+            send_cmd = 1;
+            @(posedge clk);
+            send_cmd = 0;
+            // wait for command to be sent 
+            @(posedge cmd_sent);
+	    // Call wait_resp task
+	    wait_resp();
+	  end
+
+    if(spi_cmd != spi_match) begin
+      $display("Error: SPI triggerd off bad cmd, %h", spi_cmd);
+      $stop;
+    end
+  
+	end
+endtask
+
+task channel_dump();
+    for (sample=0; sample<384; sample++)
+      fork
+        begin: timeout1
+	      repeat(6000) @(posedge clk);
+	      $display("ERR: Only received %d of 384 bytes on dump",sample);
+		  $stop();
+	      sample = 384;		// break out of loop
+	    end
+	    begin
+	      @(posedge resp_rdy);
+	      disable timeout1;
+              $fdisplay(fptr1,"%h",resp);	// write to CH1dmp.txt
+	      clr_resp_rdy = 1;
+	      @(posedge clk);
+	      clr_resp_rdy = 0;
+	    end
+      join
 
 endtask
 
